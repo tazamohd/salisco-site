@@ -21,12 +21,13 @@ A single-page, dependency-free static site:
 index.html          # markup (semantic, bilingual via data-i18n keys)
 assets/styles.css    # dark automotive-tech theme, RTL-aware, responsive
 assets/app.js        # EN/AR language toggle + telemetry count-up
-assets/logo.svg      # Salisco circuit-board wordmark (SVG recreation)
+assets/logo.png      # official Salisco circuit-board logo (nav)
+assets/favicon.png   # 64×64 favicon derived from the logo
 ```
 
-> The nav and favicon use `assets/logo.svg`. If it's removed, the nav falls back
-> to a text wordmark automatically — no broken image. Swap in the official artwork
-> any time by replacing `assets/logo.svg`.
+> The nav uses `assets/logo.png` and the tab icon uses `assets/favicon.png`.
+> If the logo is missing, the nav falls back to a text wordmark automatically —
+> no broken image.
 
 No build step. Fonts load from Google Fonts; everything else is local.
 

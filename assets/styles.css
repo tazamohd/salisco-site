@@ -88,7 +88,7 @@ h1, h2, h3 { line-height: 1.12; letter-spacing: -0.02em; font-weight: 600; }
   backdrop-filter: blur(12px);
 }
 .brand { display: inline-flex; align-items: center; gap: .6rem; font-weight: 600; font-size: 1.15rem; }
-.brand-logo { height: 38px; width: auto; display: block; border-radius: 8px; }
+.brand-logo { height: 46px; width: 46px; object-fit: cover; display: block; border-radius: 11px; border: 1px solid var(--border); }
 .brand-fallback { display: inline-flex; align-items: center; gap: .6rem; }
 .brand-fallback[hidden] { display: none; }
 .brand-mark {
