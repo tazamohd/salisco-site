@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Salisco — Technology, talent & automotive solutions · Riyadh, KSA</title>
+  <meta name="description" content="Salisco is a Riyadh-based company building technology, manpower and automotive solutions for the Kingdom of Saudi Arabia. SalisAuto is our first shipping product." />
+  <meta name="theme-color" content="#07090f" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="stylesheet" href="assets/styles.css" />
+</head>
+<body>
+  <!-- Ambient background -->
+  <div class="bg-grid" aria-hidden="true"></div>
+  <div class="bg-glow" aria-hidden="true"></div>
+
+  <!-- ===================== NAV ===================== -->
+  <header class="nav">
+    <a class="brand" href="#top" aria-label="Salisco home">
+      <!-- Drop the official logo at assets/logo.png; the text mark below is the fallback. -->
+      <img class="brand-logo" src="assets/logo.png" alt="Salisco"
+           onerror="this.remove();document.getElementById('brandFallback').hidden=false;" />
+      <span class="brand-fallback" id="brandFallback" hidden>
+        <span class="brand-mark" aria-hidden="true">S</span>
+        <span class="brand-word" data-i18n="brand">Salisco</span>
+      </span>
+    </a>
+    <nav class="nav-links" aria-label="Primary">
+      <a href="#divisions" data-i18n="nav.divisions">Divisions</a>
+      <a href="#salisauto" data-i18n="nav.salisauto">SalisAuto</a>
+      <a href="#contact" data-i18n="nav.contact">Contact</a>
+    </nav>
+    <button id="langToggle" class="lang-toggle" type="button" aria-label="Switch language">
+      <span class="lang-en">العربية</span>
+      <span class="lang-ar">English</span>
+    </button>
+  </header>
+
+  <main id="top">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">
+          <span class="dot" aria-hidden="true"></span>
+          <span data-i18n="hero.location">Riyadh · Kingdom of Saudi Arabia</span>
+        </p>
+        <h1 data-i18n="hero.title">Technology, talent &amp; automotive solutions.</h1>
+        <p class="lede" data-i18n="hero.lede">
+          Salisco is a Riyadh-based company building across three divisions — technology,
+          manpower and automotive. SalisAuto, our fleet &amp; garage platform, is the first to ship.
+        </p>
+        <div class="hero-cta">
+          <a class="btn btn-primary" href="#divisions" data-i18n="hero.ctaPrimary">Explore divisions</a>
+          <a class="btn btn-ghost" href="#salisauto" data-i18n="hero.ctaSecondary">Meet SalisAuto</a>
+        </div>
+        <dl class="hero-stats">
+          <div><dt data-i18n="stats.est">Established</dt><dd>2026</dd></div>
+          <div><dt data-i18n="stats.divisions">Divisions</dt><dd>3</dd></div>
+          <div><dt data-i18n="stats.hq">Headquarters</dt><dd data-i18n="stats.hqValue">Riyadh</dd></div>
+        </dl>
+      </div>
+
+      <!-- S-mark in radial glow, orbited by three division chips -->
+      <div class="orbit" aria-hidden="true">
+        <div class="orbit-glow"></div>
+        <div class="orbit-ring orbit-ring--1"></div>
+        <div class="orbit-ring orbit-ring--2"></div>
+        <div class="s-core"><span>S</span></div>
+        <div class="orbit-track">
+          <span class="chip chip--tech" style="--i:0"><span data-i18n="chip.tech">Technology</span></span>
+          <span class="chip chip--people" style="--i:1"><span data-i18n="chip.manpower">Manpower</span></span>
+          <span class="chip chip--auto" style="--i:2">SalisAuto</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== DIVISIONS ===================== -->
+    <section id="divisions" class="section">
+      <div class="section-head">
+        <p class="kicker" data-i18n="divisions.kicker">Three solution divisions</p>
+        <h2 data-i18n="divisions.title">One company, built for the Kingdom.</h2>
+      </div>
+      <div class="pillars">
+        <!-- Technology -->
+        <article class="pillar">
+          <div class="pillar-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3H4a1 1 0 0 0-1 1v5"/><path d="M15 3h5a1 1 0 0 1 1 1v5"/><path d="M9 21H4a1 1 0 0 1-1-1v-5"/><path d="M15 21h5a1 1 0 0 0 1-1v-5"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg>
+          </div>
+          <h3 data-i18n="div.tech.title">Technology</h3>
+          <p data-i18n="div.tech.body">Product engineering, platforms and data — the software backbone behind every Salisco service.</p>
+        </article>
+
+        <!-- Manpower -->
+        <article class="pillar">
+          <div class="pillar-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+          </div>
+          <h3 data-i18n="div.people.title">Manpower</h3>
+          <p data-i18n="div.people.body">Skilled talent and workforce solutions — recruiting, deploying and supporting the people who keep operations running.</p>
+        </article>
+
+        <!-- Automotive (accented) -->
+        <article class="pillar pillar--accent">
+          <span class="live-tag"><span class="live-dot" aria-hidden="true"></span><span data-i18n="div.auto.tag">SalisAuto live</span></span>
+          <div class="pillar-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14"/><path d="M5 17a2 2 0 1 1-4 0 2 2 0 0 1 4 0Z" transform="translate(2 0)"/><path d="M3 17l1.5-5A2 2 0 0 1 6.4 10.6h7.2a2 2 0 0 1 1.8 1.1L17 17"/><circle cx="7" cy="17" r="2"/><circle cx="17" cy="17" r="2"/></svg>
+          </div>
+          <h3 data-i18n="div.auto.title">Automotive</h3>
+          <p data-i18n="div.auto.body">Fleet &amp; garage technology for the Saudi market. Live today as SalisAuto, with more automotive products on the way.</p>
+          <a class="pillar-link" href="#salisauto"><span data-i18n="div.auto.link">See SalisAuto</span> <span class="arrow" aria-hidden="true">→</span></a>
+        </article>
+      </div>
+    </section>
+
+    <!-- ===================== SALISAUTO SPOTLIGHT ===================== -->
+    <section id="salisauto" class="section spotlight">
+      <div class="spotlight-grid">
+        <div class="spotlight-copy">
+          <span class="live-tag"><span class="live-dot" aria-hidden="true"></span><span data-i18n="spot.tag">Live now</span></span>
+          <h2 data-i18n="spot.title">SalisAuto</h2>
+          <p class="lede" data-i18n="spot.lede">
+            The fleet &amp; garage management platform shipping today — vehicles, jobs, parts and
+            technicians in one operational view, built for workshops across the Kingdom.
+          </p>
+          <ul class="spot-points">
+            <li data-i18n="spot.p1">Real-time fleet &amp; job tracking</li>
+            <li data-i18n="spot.p2">Parts network &amp; purchase workflows</li>
+            <li data-i18n="spot.p3">Technician &amp; customer portals</li>
+          </ul>
+        </div>
+
+        <!-- Telemetry panel -->
+        <div class="telemetry" role="img" aria-label="Live fleet telemetry preview">
+          <div class="tele-head">
+            <span class="tele-title" data-i18n="tele.title">Fleet telemetry</span>
+            <span class="tele-live"><span class="live-dot" aria-hidden="true"></span><span data-i18n="tele.live">LIVE</span></span>
+          </div>
+          <div class="tele-metrics">
+            <div class="metric"><span class="metric-label" data-i18n="tele.online">Vehicles online</span><span class="metric-value" data-count="128">128</span></div>
+            <div class="metric"><span class="metric-label" data-i18n="tele.uptime">Fleet uptime</span><span class="metric-value"><span data-count="99">99</span>.4%</span></div>
+            <div class="metric"><span class="metric-label" data-i18n="tele.jobs">Jobs today</span><span class="metric-value" data-count="342">342</span></div>
+            <div class="metric"><span class="metric-label" data-i18n="tele.response">Avg response</span><span class="metric-value"><span data-count="6">6</span>m</span></div>
+          </div>
+          <div class="tele-spark" aria-hidden="true">
+            <svg viewBox="0 0 320 64" preserveAspectRatio="none"><polyline class="spark-line" points="0,48 32,40 64,44 96,28 128,34 160,18 192,26 224,14 256,22 288,10 320,16"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Coming soon -->
+      <div class="coming">
+        <p class="kicker" data-i18n="coming.kicker">More automotive products</p>
+        <div class="coming-grid">
+          <article class="soon">
+            <span class="soon-tag" data-i18n="coming.tag">Coming soon</span>
+            <h3>FleetCo</h3>
+            <p data-i18n="coming.fleetco">Fleet leasing &amp; financing — vehicles on subscription for Saudi businesses.</p>
+          </article>
+          <article class="soon">
+            <span class="soon-tag" data-i18n="coming.tag">Coming soon</span>
+            <h3>Salis SP</h3>
+            <p data-i18n="coming.salissp">Spare parts marketplace &amp; supply — sourcing genuine parts across the network.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ===================== FOOTER ===================== -->
+  <footer id="contact" class="footer">
+    <div class="footer-cta">
+      <h2 data-i18n="footer.title">Let's build what's next in the Kingdom.</h2>
+      <a class="btn btn-primary" href="mailto:hello@salisco.sa" data-i18n="footer.cta">Get in touch</a>
+    </div>
+    <div class="footer-meta">
+      <p class="footer-loc">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span data-i18n="footer.loc">Riyadh, Kingdom of Saudi Arabia</span>
+      </p>
+      <p class="footer-copy" data-i18n="footer.copy">© 2026 Salisco LTD · Riyadh, KSA</p>
+    </div>
+  </footer>
+
+  <script src="assets/app.js"></script>
+</body>
+</html>
