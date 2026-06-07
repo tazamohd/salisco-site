@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" role="img" aria-label="Salisco">
+  <defs>
+    <linearGradient id="silver" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#c4cee0"/>
+    </linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7ad7f0"/>
+      <stop offset="1" stop-color="#4aa8d8"/>
+    </linearGradient>
+    <linearGradient id="amber" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#f9a23a"/>
+      <stop offset="1" stop-color="#f5781a"/>
+    </linearGradient>
+    <filter id="soft" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="1.1"/>
+    </filter>
+  </defs>
+
+  <!-- ===== upper circuit traces + nodes ===== -->
+  <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 50 L150 30 L172 30" stroke="url(#cyan)"/>
+    <path d="M196 50 L196 24 L214 24 L222 16" stroke="url(#cyan)"/>
+    <path d="M226 50 L240 36 L262 36" stroke="url(#cyan)"/>
+    <path d="M178 50 L178 40" stroke="url(#amber)"/>
+  </g>
+  <g>
+    <circle cx="172" cy="30" r="5" fill="none" stroke="url(#cyan)" stroke-width="3"/>
+    <circle cx="178" cy="36" r="3.4" fill="url(#amber)"/>
+    <circle cx="266" cy="36" r="4.4" fill="url(#cyan)"/>
+    <circle cx="224" cy="14" r="3.4" fill="url(#cyan)"/>
+    <circle cx="146" cy="44" r="3" fill="url(#amber)"/>
+  </g>
+
+  <!-- ===== lower circuit traces + nodes ===== -->
+  <g fill="none" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M150 110 L150 130 L132 130 L124 138" stroke="url(#cyan)"/>
+    <path d="M196 110 L196 134 L216 134" stroke="url(#cyan)"/>
+    <path d="M226 110 L226 124 L246 124" stroke="url(#cyan)"/>
+  </g>
+  <g>
+    <circle cx="122" cy="140" r="5" fill="none" stroke="url(#cyan)" stroke-width="3"/>
+    <circle cx="220" cy="134" r="4.4" fill="url(#cyan)"/>
+    <circle cx="250" cy="124" r="3.4" fill="url(#amber)"/>
+    <circle cx="200" cy="146" r="3" fill="url(#amber)"/>
+  </g>
+
+  <!-- ===== pill frame (cyan) with orange trace on the lower-left ===== -->
+  <rect x="86" y="56" width="216" height="48" rx="24"
+        fill="none" stroke="url(#cyan)" stroke-width="6"/>
+  <!-- orange trace flowing along the lower-left of the pill and out to a node -->
+  <path d="M150 104 Q104 104 96 92 Q86 80 100 70"
+        fill="none" stroke="url(#amber)" stroke-width="6" stroke-linecap="round"/>
+  <path d="M132 104 L132 118 L112 118"
+        fill="none" stroke="url(#amber)" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="108" cy="118" r="4.5" fill="url(#amber)"/>
+
+  <!-- ===== wordmark ===== -->
+  <text x="194" y="89" text-anchor="middle"
+        font-family="Lexend, 'Segoe UI', system-ui, sans-serif"
+        font-size="34" font-weight="800" letter-spacing="3.5"
+        fill="url(#silver)" filter="url(#soft)">SALISCO</text>
+</svg>
