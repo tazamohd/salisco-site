@@ -147,7 +147,7 @@ if (!reduce && lives.length) {
       v = Math.max(min, Math.min(max, v));
       el.textContent = v;
       el.style.transition = "color .2s ease";
-      el.style.color = "#7fe3ff";
+      el.style.color = "#6aa9ef";
       setTimeout(() => { el.style.color = ""; }, 220);
     });
   }, 2400);
@@ -235,7 +235,7 @@ if (!reduce && window.matchMedia("(hover: hover)").matches) {
   const ctx = cv.getContext("2d");
   let w, h, dpr, pts = [], raf, running = true;
   const mouse = { x: -999, y: -999 };
-  const TINT = [ "56,198,240", "245,130,31", "139,92,246" ];
+  const TINT = [ "47,128,230", "239,122,42", "91,140,255" ];
 
   function size() {
     dpr = Math.min(window.devicePixelRatio || 1, 2);
