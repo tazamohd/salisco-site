@@ -10,9 +10,23 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/png" href="assets/favicon.png" />
-  <link rel="stylesheet" href="assets/styles.css?v=4" />
+  <link rel="stylesheet" href="assets/styles.css?v=5" />
 </head>
 <body>
+  <!-- Cinematic intro -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro-inner">
+      <span class="intro-mark">S</span>
+      <span class="intro-word" aria-hidden="true">
+        <i>S</i><i>A</i><i>L</i><i>I</i><i>S</i><i>C</i><i>O</i>
+      </span>
+      <span class="intro-bar"><b></b></span>
+    </div>
+  </div>
+
+  <!-- Custom glow cursor -->
+  <div class="cursor" id="cursor" aria-hidden="true"></div>
+
   <!-- scroll progress -->
   <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
 
@@ -22,6 +36,7 @@
     <div class="aurora aurora--2"></div>
     <div class="aurora aurora--3"></div>
     <div class="bg-grid"></div>
+    <canvas class="fx" id="fx"></canvas>
     <div class="shape shape--1"></div>
     <div class="shape shape--2"></div>
     <div class="shape shape--3"></div>
@@ -41,6 +56,7 @@
     <nav class="nav-links" aria-label="Primary">
       <a href="#divisions" data-i18n="nav.divisions">Divisions</a>
       <a href="#salisauto" data-i18n="nav.salisauto">SalisAuto</a>
+      <a href="#next" data-i18n="nav.next">Next</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
     <div class="nav-actions">
@@ -214,6 +230,41 @@
         </div>
       </div>
     </section>
+
+    <!-- ===================== NEXT / ROADMAP ===================== -->
+    <section id="next" class="section next-sec">
+      <div class="section-head reveal">
+        <p class="kicker" data-i18n="next.kicker">What's next</p>
+        <h2 data-i18n="next.title">The road ahead.</h2>
+        <p class="next-lede" data-i18n="next.lede">A clear path — from a live automotive platform to one connected network across the Kingdom.</p>
+      </div>
+      <ol class="timeline">
+        <li class="tl-item reveal" data-d="0">
+          <span class="tl-node"><span class="tl-dot"></span></span>
+          <span class="tl-year" data-i18n="next.m1.year">2026 · Now</span>
+          <h3 data-i18n="next.m1.title">SalisAuto live</h3>
+          <p data-i18n="next.m1.body">Fleet &amp; garage management shipping to Saudi workshops today.</p>
+        </li>
+        <li class="tl-item reveal" data-d="1">
+          <span class="tl-node"><span class="tl-dot"></span></span>
+          <span class="tl-year" data-i18n="next.m2.year">2026</span>
+          <h3 data-i18n="next.m2.title">FleetCo</h3>
+          <p data-i18n="next.m2.body">Fleet leasing &amp; financing — vehicles on subscription for businesses.</p>
+        </li>
+        <li class="tl-item reveal" data-d="2">
+          <span class="tl-node"><span class="tl-dot"></span></span>
+          <span class="tl-year" data-i18n="next.m3.year">2027</span>
+          <h3 data-i18n="next.m3.title">Salis SP</h3>
+          <p data-i18n="next.m3.body">Spare-parts marketplace &amp; supply sourced across the network.</p>
+        </li>
+        <li class="tl-item tl-item--end reveal" data-d="3">
+          <span class="tl-node"><span class="tl-dot"></span></span>
+          <span class="tl-year" data-i18n="next.m4.year">Beyond</span>
+          <h3 data-i18n="next.m4.title">One platform</h3>
+          <p data-i18n="next.m4.body">Technology, manpower and automotive — connected across the Kingdom.</p>
+        </li>
+      </ol>
+    </section>
   </main>
 
   <!-- ===================== FOOTER ===================== -->
@@ -231,6 +282,6 @@
     </div>
   </footer>
 
-  <script src="assets/app.js?v=4"></script>
+  <script src="assets/app.js?v=5"></script>
 </body>
 </html>

@@ -8,7 +8,7 @@
 const I18N = {
   en: {
     "brand": "Salisco",
-    "nav.divisions": "Divisions", "nav.salisauto": "SalisAuto", "nav.contact": "Contact",
+    "nav.divisions": "Divisions", "nav.salisauto": "SalisAuto", "nav.next": "Next", "nav.contact": "Contact",
     "hero.location": "Riyadh · Kingdom of Saudi Arabia",
     "hero.title1": "Technology, talent", "hero.title2": "& automotive solutions.",
     "hero.lede": "Salisco is a Riyadh-based company building across three divisions — technology, manpower and automotive. SalisAuto, our fleet & garage platform, is the first to ship.",
@@ -27,12 +27,18 @@ const I18N = {
     "coming.kicker": "More automotive products", "coming.tag": "Coming soon",
     "coming.fleetco": "Fleet leasing & financing — vehicles on subscription for Saudi businesses.",
     "coming.salissp": "Spare parts marketplace & supply — sourcing genuine parts across the network.",
+    "next.kicker": "What's next", "next.title": "The road ahead.",
+    "next.lede": "A clear path — from a live automotive platform to one connected network across the Kingdom.",
+    "next.m1.year": "2026 · Now", "next.m1.title": "SalisAuto live", "next.m1.body": "Fleet & garage management shipping to Saudi workshops today.",
+    "next.m2.year": "2026", "next.m2.title": "FleetCo", "next.m2.body": "Fleet leasing & financing — vehicles on subscription for businesses.",
+    "next.m3.year": "2027", "next.m3.title": "Salis SP", "next.m3.body": "Spare-parts marketplace & supply sourced across the network.",
+    "next.m4.year": "Beyond", "next.m4.title": "One platform", "next.m4.body": "Technology, manpower and automotive — connected across the Kingdom.",
     "footer.title": "Let's build what's next in the Kingdom.", "footer.cta": "Get in touch",
     "footer.loc": "Riyadh, Kingdom of Saudi Arabia", "footer.copy": "© 2026 Salisco LTD · Riyadh, KSA"
   },
   ar: {
     "brand": "ساليسكو",
-    "nav.divisions": "القطاعات", "nav.salisauto": "ساليس أوتو", "nav.contact": "تواصل",
+    "nav.divisions": "القطاعات", "nav.salisauto": "ساليس أوتو", "nav.next": "القادم", "nav.contact": "تواصل",
     "hero.location": "الرياض · المملكة العربية السعودية",
     "hero.title1": "التقنية والكوادر", "hero.title2": "وحلول السيارات.",
     "hero.lede": "ساليسكو شركة مقرّها الرياض تعمل عبر ثلاثة قطاعات — التقنية والكوادر البشرية والسيارات. ومنصّتنا ساليس أوتو لإدارة الأساطيل والورش هي أول منتجاتنا التي تنطلق.",
@@ -51,6 +57,12 @@ const I18N = {
     "coming.kicker": "منتجات سيارات أخرى", "coming.tag": "قريبًا",
     "coming.fleetco": "تأجير وتمويل الأساطيل — مركبات بنظام الاشتراك للمنشآت السعودية.",
     "coming.salissp": "سوق وتوريد قطع الغيار — توفير قطع أصلية عبر الشبكة.",
+    "next.kicker": "ما هو قادم", "next.title": "الطريق إلى الأمام.",
+    "next.lede": "مسار واضح — من منصّة سيارات مباشرة إلى شبكة واحدة متّصلة عبر المملكة.",
+    "next.m1.year": "2026 · الآن", "next.m1.title": "ساليس أوتو مباشر", "next.m1.body": "إدارة الأساطيل والورش متاحة لورش المملكة اليوم.",
+    "next.m2.year": "2026", "next.m2.title": "فليت كو", "next.m2.body": "تأجير وتمويل الأساطيل — مركبات بنظام الاشتراك للمنشآت.",
+    "next.m3.year": "2027", "next.m3.title": "ساليس إس بي", "next.m3.body": "سوق وتوريد قطع الغيار عبر الشبكة.",
+    "next.m4.year": "وأبعد", "next.m4.title": "منصّة واحدة", "next.m4.body": "التقنية والكوادر والسيارات — متّصلة عبر المملكة.",
     "footer.title": "لنبنِ ما هو قادم في المملكة.", "footer.cta": "تواصل معنا",
     "footer.loc": "الرياض، المملكة العربية السعودية", "footer.copy": "© 2026 شركة ساليسكو المحدودة · الرياض، المملكة العربية السعودية"
   }
@@ -176,3 +188,113 @@ if (!reduce && window.matchMedia("(hover: hover)").matches) {
     });
   }, { passive: true });
 }
+
+/* ============================================================
+   Cinematic intro
+   ============================================================ */
+(function intro() {
+  const el = document.getElementById("intro");
+  if (!el) return;
+  if (reduce) { el.classList.add("intro--done"); return; }
+  document.body.classList.add("intro-lock");
+  const done = () => { el.classList.add("intro--done"); document.body.classList.remove("intro-lock"); };
+  // CSS animation hides it at ~2.6s; remove from flow shortly after, with a safety timeout.
+  el.addEventListener("animationend", (e) => { if (e.animationName === "introOut") done(); });
+  setTimeout(done, 2900);
+})();
+
+/* ============================================================
+   Custom glow cursor
+   ============================================================ */
+(function glowCursor() {
+  const cur = document.getElementById("cursor");
+  if (!cur || reduce || !window.matchMedia("(hover: hover)").matches) return;
+  let x = innerWidth / 2, y = innerHeight / 2, tx = x, ty = y;
+  addEventListener("mousemove", (e) => { tx = e.clientX; ty = e.clientY; cur.classList.add("ready"); }, { passive: true });
+  addEventListener("mousedown", () => cur.classList.add("down"));
+  addEventListener("mouseup", () => cur.classList.remove("down"));
+  addEventListener("mouseleave", () => cur.classList.remove("ready"));
+  const hoverSel = "a, button, .magnetic, .pillar, .lang-toggle";
+  document.querySelectorAll(hoverSel).forEach((h) => {
+    h.addEventListener("mouseenter", () => cur.classList.add("hover"));
+    h.addEventListener("mouseleave", () => cur.classList.remove("hover"));
+  });
+  (function loop() {
+    x += (tx - x) * 0.18; y += (ty - y) * 0.18;
+    cur.style.transform = `translate(${x}px, ${y}px)`;
+    requestAnimationFrame(loop);
+  })();
+})();
+
+/* ============================================================
+   Interactive canvas constellation (cursor-reactive)
+   ============================================================ */
+(function constellation() {
+  const cv = document.getElementById("fx");
+  if (!cv || reduce) return;
+  const ctx = cv.getContext("2d");
+  let w, h, dpr, pts = [], raf, running = true;
+  const mouse = { x: -999, y: -999 };
+  const TINT = [ "56,198,240", "245,130,31", "139,92,246" ];
+
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = cv.clientWidth; h = cv.clientHeight;
+    cv.width = w * dpr; cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const target = Math.min(90, Math.round((w * h) / 16000));
+    pts = [];
+    for (let i = 0; i < target; i++) {
+      pts.push({
+        x: Math.random() * w, y: Math.random() * h,
+        vx: (Math.random() - 0.5) * 0.25, vy: (Math.random() - 0.5) * 0.25,
+        r: Math.random() * 1.6 + 0.6, t: TINT[i % TINT.length]
+      });
+    }
+  }
+
+  function frame() {
+    if (!running) return;
+    ctx.clearRect(0, 0, w, h);
+    const LINK = 130, MOUSE = 190;
+    for (let i = 0; i < pts.length; i++) {
+      const p = pts[i];
+      p.x += p.vx; p.y += p.vy;
+      if (p.x < 0 || p.x > w) p.vx *= -1;
+      if (p.y < 0 || p.y > h) p.vy *= -1;
+      // gentle pull toward cursor
+      const mdx = mouse.x - p.x, mdy = mouse.y - p.y;
+      const md = Math.hypot(mdx, mdy);
+      if (md < MOUSE) {
+        const f = (1 - md / MOUSE) * 0.04;
+        p.vx += (mdx / (md || 1)) * f; p.vy += (mdy / (md || 1)) * f;
+        p.vx = Math.max(-0.8, Math.min(0.8, p.vx));
+        p.vy = Math.max(-0.8, Math.min(0.8, p.vy));
+        ctx.strokeStyle = `rgba(${p.t},${(1 - md / MOUSE) * 0.5})`;
+        ctx.lineWidth = 0.7;
+        ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(mouse.x, mouse.y); ctx.stroke();
+      }
+      // links to neighbours
+      for (let j = i + 1; j < pts.length; j++) {
+        const q = pts[j], dx = p.x - q.x, dy = p.y - q.y, d = Math.hypot(dx, dy);
+        if (d < LINK) {
+          ctx.strokeStyle = `rgba(${p.t},${(1 - d / LINK) * 0.22})`;
+          ctx.lineWidth = 0.6;
+          ctx.beginPath(); ctx.moveTo(p.x, p.y); ctx.lineTo(q.x, q.y); ctx.stroke();
+        }
+      }
+      ctx.fillStyle = `rgba(${p.t},.85)`;
+      ctx.beginPath(); ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2); ctx.fill();
+    }
+    raf = requestAnimationFrame(frame);
+  }
+
+  addEventListener("mousemove", (e) => { mouse.x = e.clientX; mouse.y = e.clientY; }, { passive: true });
+  addEventListener("mouseleave", () => { mouse.x = -999; mouse.y = -999; });
+  addEventListener("resize", size);
+  document.addEventListener("visibilitychange", () => {
+    running = !document.hidden;
+    if (running) { size(); frame(); } else { cancelAnimationFrame(raf); }
+  });
+  size(); frame();
+})();
