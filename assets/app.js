@@ -9,7 +9,7 @@ const I18N = {
   en: {
     "brand": "Salisco",
     "nav.divisions": "Divisions", "nav.salisauto": "SalisAuto", "nav.next": "Next", "nav.contact": "Contact",
-    "hero.location": "Riyadh · Kingdom of Saudi Arabia",
+    "hero.location": "Riyadh · Kingdom of Saudi Arabia", "hero.ai": "AI-native", "hero.building": "Now building",
     "hero.title1": "Technology, talent", "hero.title2": "& automotive solutions.",
     "hero.lede": "Salisco is a Riyadh-based company building across three divisions — technology, manpower and automotive. SalisAuto, our fleet & garage platform, is the first to ship.",
     "hero.ctaPrimary": "Explore divisions", "hero.ctaSecondary": "Meet SalisAuto",
@@ -22,8 +22,9 @@ const I18N = {
     "div.auto.tag": "SalisAuto live", "div.auto.title": "Automotive", "div.auto.body": "Fleet & garage technology for the Saudi market. Live today as SalisAuto, with more automotive products on the way.", "div.auto.link": "See SalisAuto",
     "spot.tag": "Live now", "spot.title": "SalisAuto",
     "spot.lede": "The fleet & garage management platform shipping today — vehicles, jobs, parts and technicians in one operational view, built for workshops across the Kingdom.",
-    "spot.p1": "Real-time fleet & job tracking", "spot.p2": "Parts network & purchase workflows", "spot.p3": "Technician & customer portals",
+    "spot.p1": "Real-time fleet & job tracking", "spot.p2": "Parts network & purchase workflows", "spot.p3": "Technician & customer portals", "spot.p4": "AI-assisted diagnostics & predictive maintenance",
     "tele.title": "Fleet telemetry", "tele.live": "LIVE", "tele.online": "Vehicles online", "tele.uptime": "Fleet uptime", "tele.jobs": "Jobs today", "tele.response": "Avg response",
+    "ai.title": "SalisAuto Copilot", "ai.status": "online",
     "coming.kicker": "More automotive products", "coming.tag": "Coming soon",
     "coming.fleetco": "Fleet leasing & financing — vehicles on subscription for Saudi businesses.",
     "coming.salissp": "Spare parts marketplace & supply — sourcing genuine parts across the network.",
@@ -39,7 +40,7 @@ const I18N = {
   ar: {
     "brand": "ساليسكو",
     "nav.divisions": "القطاعات", "nav.salisauto": "ساليس أوتو", "nav.next": "القادم", "nav.contact": "تواصل",
-    "hero.location": "الرياض · المملكة العربية السعودية",
+    "hero.location": "الرياض · المملكة العربية السعودية", "hero.ai": "ذكاء اصطناعي", "hero.building": "نبني الآن",
     "hero.title1": "التقنية والكوادر", "hero.title2": "وحلول السيارات.",
     "hero.lede": "ساليسكو شركة مقرّها الرياض تعمل عبر ثلاثة قطاعات — التقنية والكوادر البشرية والسيارات. ومنصّتنا ساليس أوتو لإدارة الأساطيل والورش هي أول منتجاتنا التي تنطلق.",
     "hero.ctaPrimary": "استكشف القطاعات", "hero.ctaSecondary": "تعرّف على ساليس أوتو",
@@ -52,8 +53,9 @@ const I18N = {
     "div.auto.tag": "ساليس أوتو — مباشر", "div.auto.title": "السيارات", "div.auto.body": "تقنيات إدارة الأساطيل والورش للسوق السعودي. متاحة اليوم عبر ساليس أوتو، مع منتجات سيارات أخرى قادمة.", "div.auto.link": "اكتشف ساليس أوتو",
     "spot.tag": "متاح الآن", "spot.title": "ساليس أوتو",
     "spot.lede": "منصّة إدارة الأساطيل والورش المتاحة اليوم — المركبات والمهام وقطع الغيار والفنّيون في واجهة تشغيلية واحدة، مصمّمة لورش المملكة.",
-    "spot.p1": "تتبّع الأسطول والمهام لحظيًا", "spot.p2": "شبكة قطع الغيار وعمليات الشراء", "spot.p3": "بوّابات الفنّيين والعملاء",
+    "spot.p1": "تتبّع الأسطول والمهام لحظيًا", "spot.p2": "شبكة قطع الغيار وعمليات الشراء", "spot.p3": "بوّابات الفنّيين والعملاء", "spot.p4": "تشخيص وصيانة تنبؤية بالذكاء الاصطناعي",
     "tele.title": "بيانات الأسطول الحيّة", "tele.live": "مباشر", "tele.online": "المركبات المتصلة", "tele.uptime": "جاهزية الأسطول", "tele.jobs": "مهام اليوم", "tele.response": "متوسط الاستجابة",
+    "ai.title": "مساعد ساليس أوتو", "ai.status": "متصل",
     "coming.kicker": "منتجات سيارات أخرى", "coming.tag": "قريبًا",
     "coming.fleetco": "تأجير وتمويل الأساطيل — مركبات بنظام الاشتراك للمنشآت السعودية.",
     "coming.salissp": "سوق وتوريد قطع الغيار — توفير قطع أصلية عبر الشبكة.",
@@ -297,4 +299,102 @@ if (!reduce && window.matchMedia("(hover: hover)").matches) {
     if (running) { size(); frame(); } else { cancelAnimationFrame(raf); }
   });
   size(); frame();
+})();
+
+/* ============================================================
+   Rotating keyword (typewriter)
+   ============================================================ */
+(function rotator() {
+  const el = document.getElementById("rotWord");
+  if (!el) return;
+  const WORDS = {
+    en: ["AI fleet intelligence", "Predictive maintenance", "Automation platforms", "Connected garages", "Smart logistics"],
+    ar: ["ذكاء الأساطيل", "الصيانة التنبؤية", "منصّات الأتمتة", "ورش متّصلة", "لوجستيات ذكية"]
+  };
+  if (reduce) { el.textContent = WORDS.en[0]; return; }
+  let i = 0, j = 0, deleting = false;
+  function tick() {
+    const list = WORDS[html.getAttribute("lang")] || WORDS.en;
+    const word = list[i % list.length];
+    j += deleting ? -1 : 1;
+    el.textContent = word.slice(0, j);
+    let delay = deleting ? 45 : 80;
+    if (!deleting && j === word.length) { deleting = true; delay = 1500; }
+    else if (deleting && j === 0) { deleting = false; i++; delay = 250; }
+    setTimeout(tick, delay);
+  }
+  tick();
+})();
+
+/* ============================================================
+   AI Copilot console (typewriter loop)
+   ============================================================ */
+(function aiConsole() {
+  const box = document.getElementById("aiConsole");
+  if (!box) return;
+  const SCRIPT = {
+    en: [
+      { s: "›", c: "pr", t: " analyzing fleet telemetry…" },
+      { s: "✓", c: "ok", t: " 3 vehicles flagged for predictive maintenance" },
+      { s: "✓", c: "ok", t: " route optimized · 12% fuel saved" },
+      { s: "›", c: "pr", t: " auto-assigning open jobs…" },
+      { s: "✓", c: "ok", t: " 5 work orders dispatched to technicians" },
+      { s: "▌", c: "hl", t: " Copilot ready — monitoring 128 vehicles" }
+    ],
+    ar: [
+      { s: "›", c: "pr", t: " تحليل بيانات الأسطول…" },
+      { s: "✓", c: "ok", t: " 3 مركبات بحاجة لصيانة تنبؤية" },
+      { s: "✓", c: "ok", t: " تحسين المسارات · توفير 12% من الوقود" },
+      { s: "›", c: "pr", t: " إسناد المهام المفتوحة تلقائيًا…" },
+      { s: "✓", c: "ok", t: " إرسال 5 أوامر عمل إلى الفنّيين" },
+      { s: "▌", c: "hl", t: " المساعد جاهز — مراقبة 128 مركبة" }
+    ]
+  };
+  const cursor = document.createElement("span");
+  cursor.className = "ai-cursor";
+  let timer = null, active = false;
+
+  function renderStatic() {
+    const lines = SCRIPT[html.getAttribute("lang")] || SCRIPT.en;
+    box.innerHTML = "";
+    lines.forEach((ln) => {
+      const row = document.createElement("span");
+      row.className = "ai-line";
+      row.innerHTML = `<span class="${ln.c}">${ln.s}</span>${ln.t}`;
+      box.appendChild(row);
+    });
+  }
+
+  function run() {
+    if (reduce) { renderStatic(); return; }
+    const lines = SCRIPT[html.getAttribute("lang")] || SCRIPT.en;
+    box.innerHTML = "";
+    let li = 0;
+    function nextLine() {
+      if (li >= lines.length) { timer = setTimeout(() => { if (active) run(); }, 2600); return; }
+      const ln = lines[li];
+      const row = document.createElement("span");
+      row.className = "ai-line";
+      row.innerHTML = `<span class="${ln.c}">${ln.s}</span><span class="t"></span>`;
+      box.appendChild(row);
+      const t = row.querySelector(".t");
+      row.appendChild(cursor);
+      let k = 0;
+      (function type() {
+        if (!active) return;
+        t.textContent = ln.t.slice(0, ++k);
+        if (k < ln.t.length) { timer = setTimeout(type, 26); }
+        else { li++; timer = setTimeout(nextLine, 480); }
+      })();
+    }
+    nextLine();
+  }
+
+  const io = new IntersectionObserver((es) => {
+    es.forEach((e) => {
+      if (e.isIntersecting && !active) { active = true; run(); }
+      else if (!e.isIntersecting && active) { active = false; clearTimeout(timer); }
+    });
+  }, { threshold: 0.25 });
+  io.observe(box);
 })();

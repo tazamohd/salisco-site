@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
-  <link rel="stylesheet" href="assets/styles.css?v=6" />
+  <link rel="stylesheet" href="assets/styles.css?v=7" />
 </head>
 <body>
   <!-- Cinematic intro -->
@@ -74,11 +74,16 @@
         <p class="eyebrow reveal" data-d="0">
           <span class="dot" aria-hidden="true"></span>
           <span data-i18n="hero.location">Riyadh · Kingdom of Saudi Arabia</span>
+          <span class="eyebrow-ai" data-i18n="hero.ai">AI-native</span>
         </p>
         <h1 class="reveal" data-d="1">
           <span class="line" data-i18n="hero.title1">Technology, talent</span>
           <span class="line grad" data-i18n="hero.title2">&amp; automotive solutions.</span>
         </h1>
+        <p class="hero-rotator reveal" data-d="2" aria-hidden="true">
+          <span class="rot-label" data-i18n="hero.building">Now building</span>
+          <span class="rot-words"><span class="rot-word" id="rotWord">AI fleet intelligence</span><span class="rot-caret"></span></span>
+        </p>
         <p class="lede reveal" data-d="2" data-i18n="hero.lede">
           Salisco is a Riyadh-based company building across three divisions — technology,
           manpower and automotive. SalisAuto, our fleet &amp; garage platform, is the first to ship.
@@ -185,6 +190,7 @@
             <li data-i18n="spot.p1">Real-time fleet &amp; job tracking</li>
             <li data-i18n="spot.p2">Parts network &amp; purchase workflows</li>
             <li data-i18n="spot.p3">Technician &amp; customer portals</li>
+            <li class="spot-ai" data-i18n="spot.p4">AI-assisted diagnostics &amp; predictive maintenance</li>
           </ul>
         </div>
 
@@ -212,6 +218,17 @@
             </svg>
           </div>
         </div>
+      </div>
+
+      <!-- AI Copilot console -->
+      <div class="ai-console reveal" data-d="1" aria-hidden="true">
+        <div class="ai-head">
+          <span class="ai-dots"><i></i><i></i><i></i></span>
+          <span class="ai-title" data-i18n="ai.title">SalisAuto Copilot</span>
+          <span class="ai-badge">AI</span>
+          <span class="ai-status"><span class="live-dot"></span><span data-i18n="ai.status">online</span></span>
+        </div>
+        <div class="ai-body" id="aiConsole"></div>
       </div>
 
       <div class="coming">
@@ -282,6 +299,6 @@
     </div>
   </footer>
 
-  <script src="assets/app.js?v=6"></script>
+  <script src="assets/app.js?v=7"></script>
 </body>
 </html>
