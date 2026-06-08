@@ -8,7 +8,12 @@
 const I18N = {
   en: {
     "brand": "Salisco",
-    "nav.vision": "Vision", "nav.divisions": "Divisions", "nav.salisauto": "SalisAuto", "nav.work": "Work", "nav.next": "Roadmap", "nav.contact": "Contact",
+    "nav.vision": "Vision", "nav.divisions": "Divisions", "nav.ai": "AI", "nav.salisauto": "SalisAuto", "nav.work": "Work", "nav.next": "Roadmap", "nav.contact": "Contact",
+    "ai.kicker": "AI-native", "ai.title": "Intelligence, built into every layer.",
+    "ai.lede": "From pixels to predictions — Salisco engineers AI into the core of every product: vision, language and automation that turn raw operational data into decisions.",
+    "ai.p1.t": "Predictive intelligence", "ai.p1.b": "Forecast demand, risk and maintenance before it happens.",
+    "ai.p2.t": "Computer vision & sensors", "ai.p2.b": "See, detect and respond — from cameras to telematics.",
+    "ai.p3.t": "Automation & copilots", "ai.p3.b": "Agents that orchestrate operations and assist every team.",
     "work.kicker": "Selected work", "work.title": "What we're building, in pixels.",
     "work.lede": "A living portfolio across our product lines — one platform live today, more in the pipeline.",
     "work.salisauto": "Fleet & garage management — vehicles, jobs, parts and technicians in one operational view.",
@@ -76,7 +81,12 @@ const I18N = {
   },
   ar: {
     "brand": "ساليسكو",
-    "nav.vision": "الرؤية", "nav.divisions": "القطاعات", "nav.salisauto": "ساليس أوتو", "nav.work": "أعمالنا", "nav.next": "خارطة الطريق", "nav.contact": "تواصل",
+    "nav.vision": "الرؤية", "nav.divisions": "القطاعات", "nav.ai": "الذكاء الاصطناعي", "nav.salisauto": "ساليس أوتو", "nav.work": "أعمالنا", "nav.next": "خارطة الطريق", "nav.contact": "تواصل",
+    "ai.kicker": "مبنيّ على الذكاء الاصطناعي", "ai.title": "ذكاءٌ مدمجٌ في كل طبقة.",
+    "ai.lede": "من البكسل إلى التنبؤ — تهندس ساليسكو الذكاء الاصطناعي في صميم كل منتج: رؤيةٌ ولغةٌ وأتمتةٌ تحوّل البيانات التشغيلية الخام إلى قرارات.",
+    "ai.p1.t": "ذكاء تنبؤي", "ai.p1.b": "توقّع الطلب والمخاطر والصيانة قبل وقوعها.",
+    "ai.p2.t": "رؤية حاسوبية وأجهزة استشعار", "ai.p2.b": "رؤيةٌ واكتشافٌ واستجابة — من الكاميرات إلى التتبع.",
+    "ai.p3.t": "أتمتة ومساعدون أذكياء", "ai.p3.b": "وكلاءُ ينسّقون العمليات ويساعدون كل فريق.",
     "work.kicker": "مختارات من أعمالنا", "work.title": "ما نبنيه، بالبكسل.",
     "work.lede": "معرض حيّ يمتد عبر خطوط منتجاتنا — منصّة واحدة مباشرة اليوم، والمزيد قيد التطوير.",
     "work.salisauto": "إدارة الأساطيل والورش — المركبات والمهام وقطع الغيار والفنّيون في عرض تشغيلي واحد.",
@@ -369,6 +379,76 @@ if (!reduce && window.matchMedia("(hover: hover)").matches) {
   document.addEventListener("visibilitychange", () => {
     running = !document.hidden;
     if (running) { size(); frame(); } else { cancelAnimationFrame(raf); }
+  });
+  size(); frame();
+})();
+
+/* ============================================================
+   Drifting voxel cube field (deep-space ambiance)
+   ============================================================ */
+(function cubeField() {
+  const cv = document.getElementById("cubes");
+  if (!cv || reduce) return;
+  const ctx = cv.getContext("2d");
+  let w, h, dpr, cubes = [], raf, running = true;
+  const TINTS = [[200, 214, 235], [47, 128, 230], [239, 122, 42]];
+  const rnd = (a, b) => a + Math.random() * (b - a);
+
+  function make() {
+    const depth = Math.random();
+    return {
+      x: Math.random() * w, y: Math.random() * h,
+      s: 4 + depth * 15,
+      vy: -(0.05 + depth * 0.16),
+      vx: rnd(-0.05, 0.05),
+      depth,
+      wire: Math.random() < 0.55,
+      tint: TINTS[(Math.random() * TINTS.length) | 0],
+      a: 0.1 + depth * 0.45
+    };
+  }
+  function size() {
+    dpr = Math.min(window.devicePixelRatio || 1, 2);
+    w = cv.clientWidth; h = cv.clientHeight;
+    cv.width = w * dpr; cv.height = h * dpr;
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    const n = Math.min(60, Math.round((w * h) / 26000));
+    cubes = []; for (let i = 0; i < n; i++) cubes.push(make());
+  }
+  function poly(p) { ctx.beginPath(); ctx.moveTo(p[0][0], p[0][1]); for (let i = 1; i < p.length; i++) ctx.lineTo(p[i][0], p[i][1]); ctx.closePath(); ctx.fill(); }
+  function cube(c) {
+    const s = c.s, x = c.x, y = c.y;
+    const top = [x, y - s], right = [x + s, y - s / 2], bot = [x, y], left = [x - s, y - s / 2];
+    const ll = [x - s, y + s / 2], bl = [x, y + s], rl = [x + s, y + s / 2];
+    const [r, g, b] = c.tint;
+    if (c.wire) {
+      ctx.strokeStyle = `rgba(${r},${g},${b},${c.a})`;
+      ctx.lineWidth = Math.max(0.6, s * 0.055);
+      ctx.beginPath();
+      ctx.moveTo(...top); ctx.lineTo(...right); ctx.lineTo(...rl); ctx.lineTo(...bl); ctx.lineTo(...ll); ctx.lineTo(...left); ctx.closePath();
+      ctx.moveTo(...left); ctx.lineTo(...bot); ctx.lineTo(...right); ctx.moveTo(...bot); ctx.lineTo(...bl);
+      ctx.stroke();
+    } else {
+      ctx.fillStyle = `rgba(${r},${g},${b},${c.a})`; poly([top, right, bot, left]);
+      ctx.fillStyle = `rgba(${(r * .5) | 0},${(g * .5) | 0},${(b * .5) | 0},${c.a})`; poly([left, bot, bl, ll]);
+      ctx.fillStyle = `rgba(${(r * .76) | 0},${(g * .76) | 0},${(b * .76) | 0},${c.a})`; poly([right, bot, bl, rl]);
+    }
+  }
+  function frame() {
+    if (!running) return;
+    ctx.clearRect(0, 0, w, h);
+    for (const c of cubes) {
+      c.x += c.vx; c.y += c.vy;
+      if (c.y < -30) { c.y = h + 20; c.x = Math.random() * w; }
+      if (c.x < -30) c.x = w + 20; if (c.x > w + 30) c.x = -20;
+      cube(c);
+    }
+    raf = requestAnimationFrame(frame);
+  }
+  addEventListener("resize", size);
+  document.addEventListener("visibilitychange", () => {
+    running = !document.hidden;
+    if (running) { size(); frame(); } else cancelAnimationFrame(raf);
   });
   size(); frame();
 })();

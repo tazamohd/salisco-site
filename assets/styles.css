@@ -40,6 +40,7 @@ html { scroll-behavior: smooth; }
 body {
   font-family: var(--font);
   background: var(--bg);
+  background: radial-gradient(ellipse 110% 80% at 50% -8%, #0d1626 0%, #0a1120 45%, #060a13 78%, #04070d 100%) fixed;
   color: var(--text);
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
@@ -61,6 +62,7 @@ h1, h2, h3 { line-height: 1.1; letter-spacing: -0.02em; font-weight: 700; }
 /* ---------- Animated background ---------- */
 .bg { position: fixed; inset: 0; z-index: -2; overflow: hidden; }
 .fx { position: absolute; inset: 0; width: 100%; height: 100%; pointer-events: none; opacity: .9; }
+.fx--cubes { opacity: .9; mix-blend-mode: screen; }
 .aurora {
   position: absolute; border-radius: 50%; filter: blur(90px); opacity: .5;
   will-change: transform;
@@ -191,6 +193,18 @@ html[lang="ar"] .lang-ar { display: inline; }
 }
 .s-core span { font-size: 3.6rem; font-weight: 800; background: linear-gradient(135deg, var(--cyan), var(--amber)); -webkit-background-clip: text; background-clip: text; color: transparent; }
 .s-core img { width: 76px; height: 76px; object-fit: contain; filter: drop-shadow(0 4px 16px rgba(47,128,230,.5)); }
+/* Voxel cubes dispersing around the emblem */
+.orbit-cubes { position: absolute; inset: -4%; z-index: 1; pointer-events: none; }
+.orbit-cubes i { position: absolute; width: 13px; height: 13px; border-radius: 3px; transform: rotate(24deg); background: linear-gradient(135deg, rgba(91,140,255,.5), rgba(47,128,230,.12)); box-shadow: 0 2px 10px rgba(47,128,230,.3); animation: cubeFloat 9s ease-in-out infinite; }
+.orbit-cubes i.wire { background: none; border: 1px solid rgba(150,180,240,.55); box-shadow: none; }
+.orbit-cubes i.amber { background: linear-gradient(135deg, rgba(239,122,42,.6), rgba(239,122,42,.12)); box-shadow: 0 2px 10px rgba(239,122,42,.35); }
+.orbit-cubes i:nth-child(1){ top: 6%; left: 12%; width: 10px; height: 10px; animation-duration: 8s; }
+.orbit-cubes i:nth-child(2){ top: 18%; right: 8%; animation-duration: 11s; animation-delay: -2s; }
+.orbit-cubes i:nth-child(3){ bottom: 14%; left: 6%; width: 16px; height: 16px; animation-duration: 10s; animation-delay: -4s; }
+.orbit-cubes i:nth-child(4){ top: 40%; right: 2%; width: 9px; height: 9px; animation-duration: 9s; animation-delay: -1s; }
+.orbit-cubes i:nth-child(5){ bottom: 8%; right: 22%; width: 11px; height: 11px; animation-duration: 12s; animation-delay: -5s; }
+.orbit-cubes i:nth-child(6){ top: 30%; left: 0%; width: 8px; height: 8px; animation-duration: 7s; animation-delay: -3s; }
+@keyframes cubeFloat { 0%, 100% { transform: translateY(0) rotate(24deg); opacity: .85; } 50% { transform: translateY(-12px) rotate(40deg); opacity: 1; } }
 .orbit-track { position: absolute; inset: 0; z-index: 3; animation: spin 28s linear infinite; }
 .chip {
   position: absolute; top: 50%; left: 50%;
@@ -603,6 +617,70 @@ a.ci-row:hover { transform: translateY(-2px); border-color: rgba(47,128,230,.4);
   .timeline::before { display: none; }
 }
 
+/* ===================== AI-NATIVE SECTION ===================== */
+.ai-sec { position: relative; }
+.ai-grid { display: grid; grid-template-columns: 1.05fr 1fr; gap: 3rem; align-items: center; }
+.ai-sec .section-head { text-align: start; max-width: none; margin: 0 0 1.6rem; }
+
+.ai-visual { position: relative; isolation: isolate; }
+.ai-panel { position: relative; aspect-ratio: 4 / 5; max-height: 520px; border-radius: 24px; overflow: hidden; border: 1px solid var(--border-2); background: #070c16; box-shadow: 0 30px 80px -30px rgba(0,0,0,.8), inset 0 0 0 1px rgba(255,255,255,.03); }
+
+/* Isometric voxel grid */
+.ai-voxel { position: absolute; inset: 0; opacity: .9;
+  background-color: #0a1120;
+  background-image:
+    linear-gradient(30deg, #16243f 12%, transparent 12.5%, transparent 87%, #16243f 87.5%, #16243f),
+    linear-gradient(150deg, #16243f 12%, transparent 12.5%, transparent 87%, #16243f 87.5%, #16243f),
+    linear-gradient(30deg, #16243f 12%, transparent 12.5%, transparent 87%, #16243f 87.5%, #16243f),
+    linear-gradient(150deg, #16243f 12%, transparent 12.5%, transparent 87%, #16243f 87.5%, #16243f),
+    linear-gradient(60deg, #0f1c33 25%, transparent 25.5%, transparent 75%, #0f1c33 75%, #0f1c33),
+    linear-gradient(60deg, #0f1c33 25%, transparent 25.5%, transparent 75%, #0f1c33 75%, #0f1c33);
+  background-size: 38px 66px;
+  background-position: 0 0, 0 0, 19px 33px, 19px 33px, 0 0, 19px 33px;
+  -webkit-mask-image: radial-gradient(ellipse 78% 86% at 42% 46%, #000 28%, rgba(0,0,0,.5) 58%, transparent 82%);
+          mask-image: radial-gradient(ellipse 78% 86% at 42% 46%, #000 28%, rgba(0,0,0,.5) 58%, transparent 82%);
+}
+.ai-face { position: absolute; inset: 0; mix-blend-mode: screen; background:
+   radial-gradient(circle at 44% 40%, rgba(173,205,255,.35), transparent 42%),
+   radial-gradient(circle at 62% 30%, rgba(239,122,42,.26), transparent 38%),
+   radial-gradient(circle at 50% 72%, rgba(47,128,230,.22), transparent 55%); }
+.ai-scan { position: absolute; left: 0; right: 0; top: 6%; height: 2px;
+  background: linear-gradient(90deg, transparent, rgba(120,170,255,.8), transparent);
+  box-shadow: 0 0 16px rgba(120,170,255,.6); animation: aiScan 4.5s var(--ease) infinite; }
+@keyframes aiScan { 0% { top: 6%; opacity: 0; } 12% { opacity: 1; } 88% { opacity: 1; } 100% { top: 94%; opacity: 0; } }
+
+.ai-cube { position: absolute; width: 18px; height: 18px; border-radius: 4px; transform: rotate(22deg);
+  background: linear-gradient(135deg, rgba(91,140,255,.6), rgba(47,128,230,.1)); box-shadow: 0 4px 14px rgba(47,128,230,.3);
+  animation: cubeFloat 10s ease-in-out infinite; }
+.ai-cube.wire { background: none; border: 1px solid rgba(150,180,240,.55); box-shadow: none; }
+.ai-cube.amber { background: linear-gradient(135deg, rgba(239,122,42,.65), rgba(239,122,42,.1)); box-shadow: 0 4px 14px rgba(239,122,42,.3); }
+.ai-cube--1 { top: 9%; right: 12%; width: 22px; height: 22px; animation-delay: -1s; }
+.ai-cube--2 { top: 26%; right: 4%; width: 14px; height: 14px; animation-delay: -3s; }
+.ai-cube--3 { top: 50%; right: 7%; width: 16px; height: 16px; animation-delay: -2s; }
+.ai-cube--4 { bottom: 16%; right: 18%; width: 12px; height: 12px; animation-delay: -5s; }
+.ai-cube--5 { bottom: 9%; left: 14%; width: 14px; height: 14px; animation-delay: -4s; }
+.ai-cube--6 { top: 15%; left: 10%; width: 10px; height: 10px; animation-delay: -2.5s; }
+
+/* Optional real face photo — drops in when assets/ai-face.png exists */
+.ai-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s var(--ease); }
+.ai-panel.has-photo .ai-photo { opacity: 1; }
+.ai-panel.has-photo .ai-voxel, .ai-panel.has-photo .ai-face { opacity: .22; }
+/* Optional tower facade photo — drops in when assets/tower.jpg exists */
+.facade-photo { position: absolute; inset: -7% -7% auto auto; width: 46%; max-width: 220px; border-radius: 16px; opacity: .16; transform: rotate(4deg); z-index: -1; }
+
+.ai-pills { list-style: none; display: grid; gap: .9rem; }
+.ai-pills li { display: grid; grid-template-columns: auto 1fr; column-gap: .85rem; padding: .9rem 1.1rem; border: 1px solid var(--border); border-radius: 14px; background: rgba(255,255,255,.025); }
+.ai-pills b { grid-column: 2; font-weight: 600; }
+.ai-pills li > span:last-child { grid-column: 2; color: var(--muted); font-size: .92rem; }
+.ai-dot { grid-row: 1 / span 2; align-self: center; width: 10px; height: 10px; border-radius: 50%; background: #cfe0ff; box-shadow: 0 0 10px rgba(173,205,255,.8); }
+.ai-dot--cyan { background: var(--cyan); box-shadow: 0 0 10px var(--cyan); }
+.ai-dot--amber { background: var(--amber-2); box-shadow: 0 0 10px var(--amber-2); }
+
+@media (max-width: 900px) {
+  .ai-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .ai-panel { max-height: 440px; }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
@@ -618,4 +696,5 @@ a.ci-row:hover { transform: translateY(-2px); border-color: rgba(47,128,230,.4);
   .cta-glow { animation: none !important; }
   .orbit.in .s-core { animation: none !important; opacity: 1 !important; transform: none !important; }
   .s-core::after { display: none !important; }
+  .ai-scan, .orbit-cubes i, .ai-cube { animation: none !important; }
 }

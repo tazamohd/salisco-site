@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg?r2" />
-  <link rel="stylesheet" href="assets/styles.css?v=14" />
+  <link rel="stylesheet" href="assets/styles.css?v=15" />
 </head>
 <body>
   <!-- Cinematic intro -->
@@ -37,6 +37,7 @@
     <div class="aurora aurora--3"></div>
     <div class="bg-grid"></div>
     <canvas class="fx" id="fx"></canvas>
+    <canvas class="fx fx--cubes" id="cubes"></canvas>
     <div class="shape shape--1"></div>
     <div class="shape shape--2"></div>
     <div class="shape shape--3"></div>
@@ -56,6 +57,7 @@
     <nav class="nav-links" aria-label="Primary">
       <a href="#vision" data-i18n="nav.vision">Vision</a>
       <a href="#divisions" data-i18n="nav.divisions">Divisions</a>
+      <a href="#ai" data-i18n="nav.ai">AI</a>
       <a href="#salisauto" data-i18n="nav.salisauto">SalisAuto</a>
       <a href="#work" data-i18n="nav.work">Work</a>
       <a href="#next" data-i18n="nav.next">Roadmap</a>
@@ -113,6 +115,7 @@
           <span class="chip chip--people" style="--i:1"><span data-i18n="chip.manpower">Manpower</span></span>
           <span class="chip chip--auto" style="--i:2">SalisAuto</span>
         </div>
+        <div class="orbit-cubes" aria-hidden="true"><i></i><i></i><i class="wire"></i><i class="wire"></i><i class="amber"></i><i></i></div>
       </div>
 
       <a href="#divisions" class="scroll-cue reveal" data-d="5" aria-label="Scroll down">
@@ -210,6 +213,41 @@
           <div class="dir"><span class="dir-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="6" y="2" width="12" height="20" rx="2.5"/><path d="M11 18h2"/></svg></span><h4 data-i18n="dir.mobile.t">Mobile-first apps</h4><p data-i18n="dir.mobile.b">Native experiences for operators, technicians and customers.</p></div>
           <div class="dir"><span class="dir-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M2 12h3M19 12h3M5 5l2 2M17 17l2 2M19 5l-2 2M7 17l-2 2"/></svg></span><h4 data-i18n="dir.ai.t">Applied AI</h4><p data-i18n="dir.ai.b">Copilots, automation and predictive intelligence baked in.</p></div>
           <div class="dir"><span class="dir-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5Z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg></span><h4 data-i18n="dir.focus.t">Two-sector focus</h4><p data-i18n="dir.focus.b">Deep in Automotive and Manpower / QHR — not spread thin.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== AI-NATIVE ===================== -->
+    <section id="ai" class="section ai-sec">
+      <div class="ai-grid">
+        <div class="ai-visual reveal" data-d="0" aria-hidden="true">
+          <div class="ai-panel">
+            <span class="ai-voxel"></span>
+            <span class="ai-face"></span>
+            <span class="ai-scan"></span>
+            <span class="ai-cube ai-cube--1"></span>
+            <span class="ai-cube ai-cube--2 amber"></span>
+            <span class="ai-cube ai-cube--3 wire"></span>
+            <span class="ai-cube ai-cube--4 wire"></span>
+            <span class="ai-cube ai-cube--5"></span>
+            <span class="ai-cube ai-cube--6 wire"></span>
+            <img class="ai-photo" src="assets/ai-face.png" alt=""
+                 onload="this.closest('.ai-panel').classList.add('has-photo')"
+                 onerror="this.remove()" />
+          </div>
+          <img class="facade-photo" src="assets/tower.jpg" alt="" loading="lazy" onerror="this.remove()" />
+        </div>
+        <div class="ai-copy">
+          <div class="section-head reveal" data-d="1">
+            <p class="kicker" data-i18n="ai.kicker">AI-native</p>
+            <h2 data-i18n="ai.title">Intelligence, built into every layer.</h2>
+            <p class="next-lede" data-i18n="ai.lede">From pixels to predictions — Salisco engineers AI into the core of every product: vision, language and automation that turn raw operational data into decisions.</p>
+          </div>
+          <ul class="ai-pills reveal" data-d="2">
+            <li><span class="ai-dot"></span><b data-i18n="ai.p1.t">Predictive intelligence</b><span data-i18n="ai.p1.b">Forecast demand, risk and maintenance before it happens.</span></li>
+            <li><span class="ai-dot ai-dot--cyan"></span><b data-i18n="ai.p2.t">Computer vision &amp; sensors</b><span data-i18n="ai.p2.b">See, detect and respond — from cameras to telematics.</span></li>
+            <li><span class="ai-dot ai-dot--amber"></span><b data-i18n="ai.p3.t">Automation &amp; copilots</b><span data-i18n="ai.p3.b">Agents that orchestrate operations and assist every team.</span></li>
+          </ul>
         </div>
       </div>
     </section>
@@ -553,6 +591,6 @@
     </div>
   </footer>
 
-  <script src="assets/app.js?v=14"></script>
+  <script src="assets/app.js?v=15"></script>
 </body>
 </html>
