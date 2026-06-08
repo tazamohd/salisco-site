@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;800&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
   <link rel="icon" type="image/svg+xml" href="assets/logo.svg" />
-  <link rel="stylesheet" href="assets/styles.css?v=8" />
+  <link rel="stylesheet" href="assets/styles.css?v=9" />
 </head>
 <body>
   <!-- Cinematic intro -->
@@ -57,6 +57,7 @@
       <a href="#vision" data-i18n="nav.vision">Vision</a>
       <a href="#divisions" data-i18n="nav.divisions">Divisions</a>
       <a href="#salisauto" data-i18n="nav.salisauto">SalisAuto</a>
+      <a href="#work" data-i18n="nav.work">Work</a>
       <a href="#next" data-i18n="nav.next">Roadmap</a>
       <a href="#contact" data-i18n="nav.contact">Contact</a>
     </nav>
@@ -314,6 +315,82 @@
       </div>
     </section>
 
+    <!-- ===================== WORK / SHOWCASE ===================== -->
+    <section id="work" class="section work-sec">
+      <div class="section-head reveal">
+        <p class="kicker" data-i18n="work.kicker">Selected work</p>
+        <h2 data-i18n="work.title">What we're building, in pixels.</h2>
+        <p class="next-lede" data-i18n="work.lede">A living portfolio across our two sectors — one platform live today, more in the pipeline.</p>
+      </div>
+      <div class="work-grid" id="workGrid">
+        <!-- Feature: SalisAuto -->
+        <article class="work-card work--feature reveal tilt" data-d="0">
+          <div class="work-spot" aria-hidden="true"></div>
+          <div class="mock mock--app" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">salisauto.app</span></div>
+            <div class="mock-app">
+              <div class="mock-side"><span></span><span></span><span class="on"></span><span></span><span></span></div>
+              <div class="mock-main">
+                <div class="mock-cards"><div class="mc"><b></b><u></u></div><div class="mc"><b></b><u></u></div><div class="mc"><b></b><u></u></div></div>
+                <div class="mock-chart"><i style="--h:38%"></i><i style="--h:62%"></i><i style="--h:48%"></i><i style="--h:80%"></i><i style="--h:58%"></i><i style="--h:92%"></i><i style="--h:70%"></i></div>
+              </div>
+            </div>
+          </div>
+          <div class="work-meta">
+            <span class="work-tag work-tag--live"><span class="live-dot" aria-hidden="true"></span><span data-i18n="status.live">Live</span></span>
+            <h3>SalisAuto</h3>
+            <p data-i18n="work.salisauto">Fleet &amp; garage management — vehicles, jobs, parts and technicians in one operational view.</p>
+          </div>
+        </article>
+        <!-- QHR -->
+        <article class="work-card reveal tilt" data-d="1">
+          <div class="work-spot" aria-hidden="true"></div>
+          <div class="mock mock--list" aria-hidden="true">
+            <div class="mock-bar"><i></i><i></i><i></i><span class="mock-url">qhr.work</span></div>
+            <div class="mock-rows">
+              <div class="row"><span class="av"></span><span class="ln w70"></span><span class="badge ok"></span></div>
+              <div class="row"><span class="av"></span><span class="ln w50"></span><span class="badge"></span></div>
+              <div class="row"><span class="av"></span><span class="ln w80"></span><span class="badge ok"></span></div>
+              <div class="row"><span class="av"></span><span class="ln w60"></span><span class="badge warn"></span></div>
+            </div>
+          </div>
+          <div class="work-meta">
+            <span class="work-tag work-tag--build"><span data-i18n="status.build">Building</span></span>
+            <h3>QHR</h3>
+            <p data-i18n="work.qhr">Manpower &amp; HR platform — workforce, compliance and people operations.</p>
+          </div>
+        </article>
+        <div class="work-pair">
+          <!-- FleetCo -->
+          <article class="work-card reveal tilt" data-d="2">
+            <div class="work-spot" aria-hidden="true"></div>
+            <div class="mock mock--lease" aria-hidden="true">
+              <div class="mock-bar"><i></i><i></i><i></i></div>
+              <div class="lease"><div class="lease-veh"></div><div class="lease-meta"><span class="ln w70"></span><span class="ln w40"></span><span class="pill"></span></div></div>
+            </div>
+            <div class="work-meta">
+              <span class="work-tag"><span data-i18n="status.next">Next</span></span>
+              <h3>FleetCo</h3>
+              <p data-i18n="work.fleetco">Fleet leasing &amp; financing on subscription.</p>
+            </div>
+          </article>
+          <!-- Salis SP -->
+          <article class="work-card reveal tilt" data-d="3">
+            <div class="work-spot" aria-hidden="true"></div>
+            <div class="mock mock--parts" aria-hidden="true">
+              <div class="mock-bar"><i></i><i></i><i></i></div>
+              <div class="parts"><span></span><span></span><span></span><span></span><span></span><span></span></div>
+            </div>
+            <div class="work-meta">
+              <span class="work-tag"><span data-i18n="status.next">Next</span></span>
+              <h3>Salis SP</h3>
+              <p data-i18n="work.salissp">Spare-parts marketplace &amp; supply network.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
     <!-- ===================== NEXT / ROADMAP ===================== -->
     <section id="next" class="section next-sec">
       <div class="section-head reveal">
@@ -402,6 +479,6 @@
     </div>
   </footer>
 
-  <script src="assets/app.js?v=8"></script>
+  <script src="assets/app.js?v=9"></script>
 </body>
 </html>

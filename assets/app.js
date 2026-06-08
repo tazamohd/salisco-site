@@ -8,7 +8,13 @@
 const I18N = {
   en: {
     "brand": "Salisco",
-    "nav.vision": "Vision", "nav.divisions": "Divisions", "nav.salisauto": "SalisAuto", "nav.next": "Roadmap", "nav.contact": "Contact",
+    "nav.vision": "Vision", "nav.divisions": "Divisions", "nav.salisauto": "SalisAuto", "nav.work": "Work", "nav.next": "Roadmap", "nav.contact": "Contact",
+    "work.kicker": "Selected work", "work.title": "What we're building, in pixels.",
+    "work.lede": "A living portfolio across our two sectors — one platform live today, more in the pipeline.",
+    "work.salisauto": "Fleet & garage management — vehicles, jobs, parts and technicians in one operational view.",
+    "work.qhr": "Manpower & HR platform — workforce, compliance and people operations.",
+    "work.fleetco": "Fleet leasing & financing on subscription.",
+    "work.salissp": "Spare-parts marketplace & supply network.",
     "hero.location": "Riyadh · Kingdom of Saudi Arabia", "hero.ai": "AI-native", "hero.building": "Now building",
     "hero.title1": "Technology, talent", "hero.title2": "& automotive solutions.",
     "hero.lede": "Salisco is a Riyadh-based technology company — building large-scale systems, mobile apps and applied AI, focused on two sectors: Automotive and Manpower (QHR). SalisAuto is the first to ship.",
@@ -57,7 +63,13 @@ const I18N = {
   },
   ar: {
     "brand": "ساليسكو",
-    "nav.vision": "الرؤية", "nav.divisions": "القطاعات", "nav.salisauto": "ساليس أوتو", "nav.next": "خارطة الطريق", "nav.contact": "تواصل",
+    "nav.vision": "الرؤية", "nav.divisions": "القطاعات", "nav.salisauto": "ساليس أوتو", "nav.work": "أعمالنا", "nav.next": "خارطة الطريق", "nav.contact": "تواصل",
+    "work.kicker": "مختارات من أعمالنا", "work.title": "ما نبنيه، بالبكسل.",
+    "work.lede": "معرض حيّ يمتد عبر قطاعينا — منصّة واحدة مباشرة اليوم، والمزيد قيد التطوير.",
+    "work.salisauto": "إدارة الأساطيل والورش — المركبات والمهام وقطع الغيار والفنّيون في عرض تشغيلي واحد.",
+    "work.qhr": "منصّة كوادر وموارد بشرية — القوى العاملة والامتثال وعمليات الموظفين.",
+    "work.fleetco": "تأجير وتمويل الأساطيل بنظام الاشتراك.",
+    "work.salissp": "سوق قطع الغيار وشبكة التوريد.",
     "hero.location": "الرياض · المملكة العربية السعودية", "hero.ai": "ذكاء اصطناعي", "hero.building": "نبني الآن",
     "hero.title1": "التقنية والكوادر", "hero.title2": "وحلول السيارات.",
     "hero.lede": "ساليسكو شركة تقنية مقرّها الرياض — تبني أنظمة واسعة النطاق وتطبيقات جوّال وذكاءً اصطناعيًا تطبيقيًا، مع التركيز على قطاعين: السيارات والكوادر (QHR). وساليس أوتو أول منتجاتنا التي تنطلق.",
@@ -454,5 +466,29 @@ if (!reduce && window.matchMedia("(hover: hover)").matches) {
     window.location.href = `mailto:hello@salisco.sa?subject=${subject}&body=${body}`;
     note.textContent = dict["contact.sent"]; note.className = "form-note ok";
     form.reset();
+  });
+})();
+
+/* ============================================================
+   Work cards — pointer tilt + spotlight
+   ============================================================ */
+(function workTilt() {
+  const cards = document.querySelectorAll(".work-card.tilt");
+  if (!cards.length) return;
+  const reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const fine = matchMedia("(pointer: fine)").matches;
+  cards.forEach((card) => {
+    card.addEventListener("pointermove", (e) => {
+      const r = card.getBoundingClientRect();
+      const px = (e.clientX - r.left) / r.width;
+      const py = (e.clientY - r.top) / r.height;
+      card.style.setProperty("--mx", (px * 100).toFixed(1) + "%");
+      card.style.setProperty("--my", (py * 100).toFixed(1) + "%");
+      if (reduce || !fine) return;
+      const rx = (0.5 - py) * 7;
+      const ry = (px - 0.5) * 7;
+      card.style.transform = `perspective(900px) rotateX(${rx.toFixed(2)}deg) rotateY(${ry.toFixed(2)}deg) translateY(-4px)`;
+    });
+    card.addEventListener("pointerleave", () => { card.style.transform = ""; });
   });
 })();
