@@ -8,10 +8,28 @@
 const I18N = {
   en: {
     "brand": "Salisco",
-    "nav.divisions": "Divisions", "nav.salisauto": "SalisAuto", "nav.next": "Next", "nav.contact": "Contact",
+    "nav.vision": "Vision", "nav.divisions": "Divisions", "nav.salisauto": "SalisAuto", "nav.next": "Roadmap", "nav.contact": "Contact",
     "hero.location": "Riyadh · Kingdom of Saudi Arabia", "hero.ai": "AI-native", "hero.building": "Now building",
     "hero.title1": "Technology, talent", "hero.title2": "& automotive solutions.",
-    "hero.lede": "Salisco is a Riyadh-based company building across three divisions — technology, manpower and automotive. SalisAuto, our fleet & garage platform, is the first to ship.",
+    "hero.lede": "Salisco is a Riyadh-based technology company — building large-scale systems, mobile apps and applied AI, focused on two sectors: Automotive and Manpower (QHR). SalisAuto is the first to ship.",
+    "vision.kicker": "Vision & mission", "vision.title": "A technology company, engineering the Kingdom's next systems.",
+    "vision.lede": "Salisco builds large-scale systems, mobile apps and applied AI — focused on two sectors that move Saudi Arabia: Automotive and Manpower (QHR).",
+    "vision.vTag": "Vision", "vision.vBody": "To be Saudi Arabia's technology engine — building systems and AI that power entire industries, from the road to the workforce.",
+    "vision.mTag": "Mission", "vision.mBody": "To design and ship dependable software, mobile apps and AI products that make our two sectors — Automotive and Manpower / QHR — faster, smarter and more reliable.",
+    "vision.dirKicker": "How we build",
+    "dir.systems.t": "Large-scale systems", "dir.systems.b": "Enterprise platforms engineered to scale across operations.",
+    "dir.mobile.t": "Mobile-first apps", "dir.mobile.b": "Native experiences for operators, technicians and customers.",
+    "dir.ai.t": "Applied AI", "dir.ai.b": "Copilots, automation and predictive intelligence baked in.",
+    "dir.focus.t": "Two-sector focus", "dir.focus.b": "Deep in Automotive and Manpower / QHR — not spread thin.",
+    "focus.kicker": "What we're building", "focus.title": "Two sectors. One technology core.",
+    "focus.lede": "One core of systems, mobile and AI — applied deeply across two verticals, growing into a multi-product technology group.",
+    "focus.core": "Systems · Mobile · AI", "focus.auto": "Automotive", "focus.people": "Manpower / QHR", "focus.workforce": "Workforce ops",
+    "status.live": "Live", "status.next": "Next", "status.build": "Building", "status.planned": "Planned",
+    "contact.kicker": "Get in touch", "contact.title": "Let's build what's next in the Kingdom.",
+    "contact.lede": "Partnerships, talent, or a project in Automotive or Manpower / QHR — we'd love to hear from you.",
+    "contact.email": "Email", "contact.phone": "Phone", "contact.hq": "Headquarters", "contact.hqVal": "Riyadh, Kingdom of Saudi Arabia",
+    "contact.name": "Name", "contact.yourEmail": "Email", "contact.message": "Message", "contact.send": "Send message",
+    "contact.sent": "Opening your email app…", "contact.invalid": "Please fill in all fields.",
     "hero.ctaPrimary": "Explore divisions", "hero.ctaSecondary": "Meet SalisAuto",
     "cue.scroll": "Scroll",
     "stats.est": "Established", "stats.divisions": "Divisions", "stats.hq": "Headquarters", "stats.hqValue": "Riyadh",
@@ -39,10 +57,28 @@ const I18N = {
   },
   ar: {
     "brand": "ساليسكو",
-    "nav.divisions": "القطاعات", "nav.salisauto": "ساليس أوتو", "nav.next": "القادم", "nav.contact": "تواصل",
+    "nav.vision": "الرؤية", "nav.divisions": "القطاعات", "nav.salisauto": "ساليس أوتو", "nav.next": "خارطة الطريق", "nav.contact": "تواصل",
     "hero.location": "الرياض · المملكة العربية السعودية", "hero.ai": "ذكاء اصطناعي", "hero.building": "نبني الآن",
     "hero.title1": "التقنية والكوادر", "hero.title2": "وحلول السيارات.",
-    "hero.lede": "ساليسكو شركة مقرّها الرياض تعمل عبر ثلاثة قطاعات — التقنية والكوادر البشرية والسيارات. ومنصّتنا ساليس أوتو لإدارة الأساطيل والورش هي أول منتجاتنا التي تنطلق.",
+    "hero.lede": "ساليسكو شركة تقنية مقرّها الرياض — تبني أنظمة واسعة النطاق وتطبيقات جوّال وذكاءً اصطناعيًا تطبيقيًا، مع التركيز على قطاعين: السيارات والكوادر (QHR). وساليس أوتو أول منتجاتنا التي تنطلق.",
+    "vision.kicker": "الرؤية والرسالة", "vision.title": "شركة تقنية تهندس أنظمة المملكة القادمة.",
+    "vision.lede": "ساليسكو تبني أنظمة واسعة النطاق وتطبيقات جوّال وذكاءً اصطناعيًا — مع التركيز على قطاعين يحرّكان المملكة: السيارات والكوادر (QHR).",
+    "vision.vTag": "الرؤية", "vision.vBody": "أن نكون محرّك المملكة التقني — نبني أنظمة وذكاءً اصطناعيًا يشغّل قطاعات بأكملها، من الطريق إلى الكوادر.",
+    "vision.mTag": "الرسالة", "vision.mBody": "أن نصمّم ونطلق برمجيات وتطبيقات جوّال ومنتجات ذكاء اصطناعي موثوقة تجعل قطاعينا — السيارات والكوادر / QHR — أسرع وأذكى وأكثر اعتمادية.",
+    "vision.dirKicker": "كيف نبني",
+    "dir.systems.t": "أنظمة واسعة النطاق", "dir.systems.b": "منصّات مؤسسية مهندَسة للتوسّع عبر العمليات.",
+    "dir.mobile.t": "تطبيقات تركّز على الجوّال", "dir.mobile.b": "تجارب أصيلة للمشغّلين والفنّيين والعملاء.",
+    "dir.ai.t": "ذكاء اصطناعي تطبيقي", "dir.ai.b": "مساعدون وأتمتة وذكاء تنبؤي مدمجة في صميم المنتج.",
+    "dir.focus.t": "تركيز على قطاعين", "dir.focus.b": "عمق في السيارات والكوادر / QHR — دون تشتّت.",
+    "focus.kicker": "ما الذي نبنيه", "focus.title": "قطاعان. نواة تقنية واحدة.",
+    "focus.lede": "نواة واحدة من الأنظمة والجوّال والذكاء الاصطناعي — مطبّقة بعمق عبر قطاعين، لتنمو إلى مجموعة تقنية متعدّدة المنتجات.",
+    "focus.core": "أنظمة · جوّال · ذكاء اصطناعي", "focus.auto": "السيارات", "focus.people": "الكوادر / QHR", "focus.workforce": "عمليات الكوادر",
+    "status.live": "مباشر", "status.next": "قادم", "status.build": "قيد البناء", "status.planned": "مخطّط",
+    "contact.kicker": "تواصل معنا", "contact.title": "لنبنِ ما هو قادم في المملكة.",
+    "contact.lede": "شراكات أو كفاءات أو مشروع في السيارات أو الكوادر / QHR — يسعدنا أن نسمع منك.",
+    "contact.email": "البريد", "contact.phone": "الهاتف", "contact.hq": "المقر الرئيسي", "contact.hqVal": "الرياض، المملكة العربية السعودية",
+    "contact.name": "الاسم", "contact.yourEmail": "البريد الإلكتروني", "contact.message": "الرسالة", "contact.send": "إرسال الرسالة",
+    "contact.sent": "جارٍ فتح تطبيق البريد…", "contact.invalid": "يرجى تعبئة جميع الحقول.",
     "hero.ctaPrimary": "استكشف القطاعات", "hero.ctaSecondary": "تعرّف على ساليس أوتو",
     "cue.scroll": "تصفّح",
     "stats.est": "التأسيس", "stats.divisions": "القطاعات", "stats.hq": "المقر الرئيسي", "stats.hqValue": "الرياض",
@@ -397,4 +433,26 @@ if (!reduce && window.matchMedia("(hover: hover)").matches) {
     });
   }, { threshold: 0.25 });
   io.observe(box);
+})();
+
+/* ============================================================
+   Contact form → mailto
+   ============================================================ */
+(function contactForm() {
+  const form = document.getElementById("contactForm");
+  if (!form) return;
+  const note = document.getElementById("formNote");
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    const dict = I18N[html.getAttribute("lang")] || I18N.en;
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const msg = form.message.value.trim();
+    if (!name || !email || !msg) { note.textContent = dict["contact.invalid"]; note.className = "form-note err"; return; }
+    const subject = encodeURIComponent(`Salisco enquiry — ${name}`);
+    const body = encodeURIComponent(`${msg}\n\n— ${name}\n${email}`);
+    window.location.href = `mailto:hello@salisco.sa?subject=${subject}&body=${body}`;
+    note.textContent = dict["contact.sent"]; note.className = "form-note ok";
+    form.reset();
+  });
 })();
