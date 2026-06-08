@@ -263,7 +263,7 @@ html[lang="ar"] .lang-ar { display: inline; }
 /* ---------- Next / roadmap timeline ---------- */
 .next-sec { position: relative; }
 .next-lede { color: var(--muted); font-size: 1.06rem; margin-top: 1rem; max-width: 42rem; }
-.timeline { list-style: none; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.6rem; counter-reset: tl; position: relative; }
+.timeline { list-style: none; display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.4rem; counter-reset: tl; position: relative; }
 .timeline::before { content: ""; position: absolute; top: 11px; inset-inline: 4%; height: 1px; background: linear-gradient(90deg, var(--cyan), var(--auto)); opacity: .4; }
 [dir="rtl"] .timeline::before { background: linear-gradient(270deg, var(--cyan), var(--auto)); }
 .tl-item { position: relative; padding-top: 2.6rem; }
@@ -450,13 +450,14 @@ body.intro-lock { overflow: hidden; }
 .arch-core img { width: 46px; height: 46px; filter: drop-shadow(0 4px 14px rgba(47,128,230,.5)); }
 .arch-core-name { font-weight: 800; font-size: 1.25rem; letter-spacing: -.01em; }
 .arch-core-sub { font-family: var(--mono); font-size: .76rem; color: var(--cyan); letter-spacing: .04em; }
-.arch-branches { display: grid; grid-template-columns: 1fr 1fr; gap: 2.4rem; width: 100%; max-width: 760px; margin-top: 2.6rem; position: relative; }
+.arch-branches { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.8rem; width: 100%; max-width: 1000px; margin-top: 2.6rem; position: relative; }
 .arch-branches::before { content: ""; position: absolute; top: -2.6rem; left: 50%; width: 1px; height: 2.6rem; background: linear-gradient(var(--cyan), transparent); transform: translateX(-50%); }
 .branch { position: relative; display: grid; gap: .8rem; padding-top: 1rem; }
 .branch::before { content: ""; position: absolute; top: 0; inset-inline: 12%; height: 1px; background: linear-gradient(90deg, transparent, var(--border-2), transparent); }
 .branch-head { justify-self: center; padding: .35rem 1rem; border-radius: 999px; font-family: var(--mono); font-size: .8rem; letter-spacing: .06em; border: 1px solid var(--border-2); }
 .branch--auto .branch-head { color: var(--amber-2); border-color: rgba(239,122,42,.4); box-shadow: 0 0 20px -6px rgba(239,122,42,.6); }
 .branch--people .branch-head { color: var(--cyan); border-color: rgba(47,128,230,.4); box-shadow: 0 0 20px -6px rgba(47,128,230,.6); }
+.branch--secure .branch-head { color: var(--live); border-color: rgba(52,211,153,.4); box-shadow: 0 0 20px -6px rgba(52,211,153,.6); }
 .node {
   display: flex; align-items: center; justify-content: space-between; gap: 1rem;
   padding: .9rem 1.1rem; border-radius: var(--radius-sm); border: 1px solid var(--border);
@@ -495,9 +496,9 @@ a.ci-row:hover { transform: translateY(-2px); border-color: rgba(47,128,230,.4);
 .form-note.err { color: var(--amber-2); }
 
 /* ---------- Work / showcase (bento + animated mocks) ---------- */
-.work-grid { display: grid; grid-template-columns: 1.2fr 1fr; grid-template-rows: auto auto; gap: 1.3rem; }
-.work--feature { grid-row: 1 / span 2; }
-.work-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; }
+.work-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 1.3rem; }
+.work--feature { grid-column: 1; grid-row: 1 / span 2; }
+.work-pair { grid-column: 1 / -1; display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; }
 .work-card {
   position: relative; overflow: hidden; display: flex; flex-direction: column;
   border-radius: var(--radius); border: 1px solid var(--border);
@@ -549,6 +550,14 @@ a.ci-row:hover { transform: translateY(-2px); border-color: rgba(47,128,230,.4);
 .parts span { border-radius: 8px; background: var(--panel-2); border: 1px solid var(--border); }
 .parts span:nth-child(2) { background: rgba(47,128,230,.18); } .parts span:nth-child(5) { background: rgba(239,122,42,.18); }
 
+.mock--watch .watch { padding: 14px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 8px; height: 118px; position: relative; overflow: hidden; }
+.watch > span:not(.scan) { border-radius: 8px; background: linear-gradient(160deg, rgba(255,255,255,.05), rgba(10,20,38,.7)); border: 1px solid var(--border); position: relative; }
+.watch > span:not(.scan)::after { content: ""; position: absolute; left: 7px; bottom: 7px; width: 7px; height: 7px; border-radius: 50%; background: var(--live); box-shadow: 0 0 8px var(--live); }
+.watch > span.alert { border-color: rgba(239,122,42,.6); }
+.watch > span.alert::after { background: var(--amber-2); box-shadow: 0 0 8px var(--amber-2); }
+.watch .scan { position: absolute; left: 0; right: 0; top: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--live), transparent); animation: vmScan 3.5s var(--ease) infinite; }
+.ai-pill { font-family: var(--mono); font-size: .58rem; letter-spacing: .08em; color: var(--cyan); border: 1px solid rgba(47,128,230,.4); background: rgba(47,128,230,.12); padding: .1rem .35rem; border-radius: 6px; vertical-align: middle; margin-inline-start: .45rem; }
+
 .work-meta { padding: 1.2rem 1.4rem 1.4rem; display: flex; flex-direction: column; gap: .5rem; margin-top: auto; position: relative; z-index: 2; }
 .work-meta h3 { font-size: 1.15rem; }
 .work--feature .work-meta h3 { font-size: 1.5rem; }
@@ -578,6 +587,8 @@ a.ci-row:hover { transform: translateY(-2px); border-color: rgba(47,128,230,.4);
 @media (max-width: 1080px) and (min-width: 901px) {
   .steps { grid-template-columns: repeat(3, 1fr); }
   .steps::before { display: none; }
+  .timeline { grid-template-columns: repeat(3, 1fr); }
+  .timeline::before { display: none; }
 }
 
 /* ---------- Reduced motion ---------- */
@@ -589,7 +600,7 @@ a.ci-row:hover { transform: translateY(-2px); border-color: rgba(47,128,230,.4);
   .intro { display: none !important; }
   .cursor { display: none !important; }
   .rot-caret, .ai-cursor { animation: none !important; }
-  .vm-scan { display: none !important; }
+  .vm-scan, .watch .scan { display: none !important; }
   .mock-chart i { animation: none !important; transform: scaleY(1) !important; opacity: 1 !important; }
   .work-card { transform: none !important; }
   .cta-glow { animation: none !important; }
