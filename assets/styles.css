@@ -318,6 +318,8 @@ html[lang="ar"] .lang-ar { display: inline; }
   .arch-branches { grid-template-columns: 1fr; gap: 1.6rem; max-width: 420px; }
   .work-grid { grid-template-columns: 1fr; }
   .work--feature { grid-row: auto; }
+  .steps { grid-template-columns: 1fr; }
+  .steps::before { display: none; }
   .contact-grid { grid-template-columns: 1fr; }
   .timeline { grid-template-columns: 1fr; gap: 0; }
   .timeline::before { inset: 0 auto 0 11px; inset-inline-start: 11px; width: 1px; height: 100%; background: linear-gradient(var(--cyan), var(--auto)); }
@@ -555,6 +557,29 @@ a.ci-row:hover { transform: translateY(-2px); border-color: rgba(47,128,230,.4);
 .work-tag--live { color: var(--live); border-color: rgba(52,211,153,.4); }
 .work-tag--build { color: var(--cyan); border-color: rgba(47,128,230,.4); }
 
+/* ---------- Approach / process steps ---------- */
+.steps { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; position: relative; }
+.steps::before { content: ""; position: absolute; top: 44px; inset-inline: 8%; height: 2px; background: linear-gradient(90deg, transparent, var(--border-2) 12%, var(--border-2) 88%, transparent); }
+.step { position: relative; padding: 1.5rem 1.3rem; border-radius: var(--radius-sm); border: 1px solid var(--border); background: linear-gradient(165deg, rgba(47,128,230,.05), rgba(15,25,43,.5)); transition: transform .3s var(--ease), border-color .3s var(--ease), box-shadow .3s var(--ease); }
+.step:hover { transform: translateY(-5px); border-color: rgba(47,128,230,.4); box-shadow: 0 22px 50px -28px rgba(47,128,230,.5); }
+.step-n { display: inline-grid; place-items: center; width: 46px; height: 46px; border-radius: 13px; font-family: var(--mono); font-size: 1.05rem; color: var(--cyan); background: linear-gradient(160deg, rgba(47,128,230,.18), rgba(15,25,43,.7)); border: 1px solid rgba(47,128,230,.32); margin-bottom: 1rem; position: relative; z-index: 1; }
+.step--end .step-n { color: var(--amber-2); background: linear-gradient(160deg, rgba(239,122,42,.18), rgba(15,25,43,.7)); border-color: rgba(239,122,42,.36); }
+.step h3 { font-size: 1.05rem; margin-bottom: .45rem; }
+.step p { color: var(--muted); font-size: .9rem; line-height: 1.55; }
+
+/* ---------- CTA band ---------- */
+.cta-band { max-width: 1180px; margin: 0 auto; padding: 1rem 6vw 4.5rem; }
+.cta-inner { position: relative; overflow: hidden; text-align: center; padding: 3.4rem 2rem; border-radius: var(--radius); border: 1px solid rgba(47,128,230,.28); background: linear-gradient(150deg, rgba(47,128,230,.14), rgba(239,122,42,.07)); }
+.cta-glow { position: absolute; width: 60%; height: 200%; top: -50%; left: 50%; transform: translateX(-50%); background: radial-gradient(closest-side, rgba(47,128,230,.35), transparent 70%); filter: blur(10px); animation: ctaPulse 7s var(--ease) infinite; pointer-events: none; }
+@keyframes ctaPulse { 0%,100% { opacity: .55; } 50% { opacity: 1; } }
+.cta-inner > * { position: relative; z-index: 1; }
+.cta-inner h2 { font-size: clamp(1.7rem, 4vw, 2.7rem); margin: .2rem 0 .7rem; }
+.cta-inner p { color: var(--muted); max-width: 52ch; margin: 0 auto 1.8rem; }
+@media (max-width: 1080px) and (min-width: 901px) {
+  .steps { grid-template-columns: repeat(3, 1fr); }
+  .steps::before { display: none; }
+}
+
 /* ---------- Reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
@@ -567,4 +592,5 @@ a.ci-row:hover { transform: translateY(-2px); border-color: rgba(47,128,230,.4);
   .vm-scan { display: none !important; }
   .mock-chart i { animation: none !important; transform: scaleY(1) !important; opacity: 1 !important; }
   .work-card { transform: none !important; }
+  .cta-glow { animation: none !important; }
 }
