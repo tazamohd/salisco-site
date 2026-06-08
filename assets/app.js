@@ -250,13 +250,11 @@ if (!reduce && window.matchMedia("(hover: hover)").matches) {
     btn.addEventListener("mouseleave", () => { btn.style.transform = ""; });
   });
 
-  /* ---------- Orbit / shape parallax ---------- */
-  const core = document.querySelector("[data-parallax]");
+  /* ---------- Shape parallax (logo mark stays static) ---------- */
   const shapes = document.querySelectorAll(".shape");
   window.addEventListener("mousemove", (e) => {
     const dx = (e.clientX / window.innerWidth - 0.5);
     const dy = (e.clientY / window.innerHeight - 0.5);
-    if (core) core.style.transform = `translate(${dx * -22}px, ${dy * -22}px)`;
     shapes.forEach((s, i) => {
       const k = (i + 1) * 8;
       s.style.marginLeft = (dx * k) + "px";
