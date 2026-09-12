@@ -32,6 +32,20 @@ A high-motion, dependency-free single page:
 
 ## What's in here
 
+Two things live in this repository:
+
+| Path | What it is |
+| --- | --- |
+| `index.html`, `assets/`, `versions/` | **This corporate site** — the dependency-free single page described below. Unchanged. |
+| `site/` | **The SALISCO platform site** — a separate Next.js app for the automotive platform (vehicle owners, workshops, spare parts, fleets, insurance, business). See [`site/README.md`](./site/README.md). |
+| `design/` | The Claude Design handoff the `site/` app was built from: the prototype, the content deck, and the chat transcript. |
+
+The two are independent — `site/` has its own dependencies and build, and nothing in
+the corporate page imports from it. Which one becomes the published site is still an
+open decision.
+
+### The corporate site
+
 A single-page, dependency-free static site:
 
 ```

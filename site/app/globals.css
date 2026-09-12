@@ -1,0 +1,218 @@
+@import "tailwindcss";
+
+/*
+  SALISCO design tokens — extracted verbatim from the Claude Design prototype
+  (design/Salisco.dc.html). Do not drift these values without a design change.
+*/
+@theme {
+  /* Surfaces */
+  --color-ink: #05080f;
+  --color-ink-2: #070c18;
+  --color-ink-3: #0a1226;
+  --color-ink-deep: #030509;
+
+  /* Type */
+  --color-text: #e8ecf3;
+  --color-muted: #b8c4dc;
+  --color-dim: #a3b3cc;
+  --color-faint: #8ba0c0;
+  --color-fainter: #6a7a96;
+
+  /* Brand — orange accent */
+  --color-orange: #ff7a29;
+  --color-orange-300: #ffb37a;
+  --color-orange-400: #ffa060;
+  --color-orange-700: #cc5a10;
+
+  /* Brand — blue */
+  --color-blue: #4a7fd6;
+  --color-blue-300: #8ba8dc;
+  --color-blue-900: #1e3fa0;
+
+  /* Brand — supporting */
+  --color-silver: #c0c8d6;
+  --color-green: #6adc8e;
+
+  /* Typography stacks. --font-arabic is swapped in for `lang="ar"` below. */
+  --font-display: var(--font-sora), "Sora", system-ui, sans-serif;
+  --font-sans: var(--font-inter), "Inter", system-ui, sans-serif;
+  --font-mono: var(--font-jetbrains), "JetBrains Mono", ui-monospace, monospace;
+
+  --animate-float-s: floatS 8s ease-in-out infinite;
+  --animate-pulse-dot: pulseDot 2s ease-in-out infinite;
+  --animate-slide-up: slideUp 0.8s ease-out;
+}
+
+@keyframes floatS {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-14px) rotate(3deg);
+  }
+}
+
+@keyframes pulseDot {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/*
+  Element defaults belong in @layer base. Unlayered rules beat *every* layered
+  rule regardless of specificity, so a bare `a { color }` here would silently
+  override every Tailwind text-colour utility applied to a link.
+*/
+@layer base {
+  html,
+  body {
+    margin: 0;
+    padding: 0;
+    background: var(--color-ink);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  /*
+    Arabic swaps every stack to the Arabic face. Sora / Inter / JetBrains Mono
+    have no Arabic coverage, so without this the browser silently falls back to
+    a system face and the page loses its typographic identity in RTL.
+  */
+  :lang(ar) {
+    --font-display: var(--font-arabic), "IBM Plex Sans Arabic", system-ui, sans-serif;
+    --font-sans: var(--font-arabic), "IBM Plex Sans Arabic", system-ui, sans-serif;
+    --font-mono: var(--font-arabic), "IBM Plex Sans Arabic", system-ui, sans-serif;
+    /* Arabic has no uppercase and no meaningful letterspacing; the mono eyebrows
+       in the design rely on both, so neutralise them rather than mangle the text. */
+    letter-spacing: normal;
+  }
+
+  :lang(ar) .eyebrow {
+    letter-spacing: normal;
+    text-transform: none;
+  }
+
+  a {
+    color: var(--color-orange);
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: var(--color-orange-400);
+  }
+
+  ::selection {
+    background: var(--color-orange);
+    color: var(--color-ink);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-orange);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* The hero / CTA blueprint grid. Kept as a utility because the mask is not
+     expressible in Tailwind's arbitrary-value syntax without escaping noise. */
+  .grid-backdrop {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(74, 127, 214, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(74, 127, 214, 0.06) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .grid-backdrop--hero {
+    mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);
+  }
+
+  .grid-backdrop--cta {
+    mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+    -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);
+  }
+
+  /* Gradient text used for the hero highlight and the step numerals. */
+  .text-gradient-orange {
+    background: linear-gradient(135deg, #ff7a29 0%, #ffb37a 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .text-gradient-blue {
+    background: linear-gradient(180deg, #4a7fd6, #1e3fa0);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  .text-gradient-orange-deep {
+    background: linear-gradient(180deg, #ff7a29, #cc5a10);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+  }
+
+  /* Card surface from the prototype: a subtle top-lit navy panel. */
+  .surface {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 25, 50, 0.6) 0%,
+      rgba(10, 18, 40, 0.3) 100%
+    );
+  }
+
+  .surface-solid {
+    background: linear-gradient(
+      180deg,
+      rgba(15, 25, 50, 0.9) 0%,
+      rgba(10, 18, 40, 0.9) 100%
+    );
+  }
+
+  /* Directional glyph: the design uses → everywhere, which must flip in RTL. */
+  [dir="rtl"] .dir-flip {
+    transform: scaleX(-1);
+    display: inline-block;
+  }
+}
