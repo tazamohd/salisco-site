@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #05080f; color: #e8ecf3; font-family: 'Inter', system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+  a { color: #ff7a29; text-decoration: none; }
+  a:hover { color: #ffa060; }
+  @keyframes floatS { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-14px) rotate(3deg); } }
+  @keyframes shimmer { 0% { background-position: -200% 0; } 100% { background-position: 200% 0; } }
+  @keyframes pulseDot { 0%,100% { opacity: 0.4; } 50% { opacity: 1; } }
+  @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  ::selection { background: #ff7a29; color: #05080f; }
+</style>
+</helmet>
+
+<div style="background: #05080f; color: #e8ecf3; font-family: 'Inter', system-ui, sans-serif; overflow-x: hidden;">
+
+  <!-- ANNOUNCEMENT BAR -->
+  <div style="background: linear-gradient(90deg, #0a1a3a 0%, #0f2456 50%, #0a1a3a 100%); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 10px 24px; text-align: center; font-size: 13px; letter-spacing: 0.02em; color: #b8c4dc; display: flex; align-items: center; justify-content: center; gap: 10px;">
+    <span style="display: inline-block; width: 6px; height: 6px; background: #ff7a29; border-radius: 50%; animation: pulseDot 2s ease-in-out infinite;"></span>
+    Coming soon — a new digital experience that brings vehicle services and automotive business operations together.
+  </div>
+
+  <!-- NAV -->
+  <nav style="position: sticky; top: 0; z-index: 100; background: rgba(5, 8, 15, 0.85); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); padding: 16px 40px; display: flex; align-items: center; justify-content: space-between;">
+    <div style="display: flex; align-items: center; gap: 48px;">
+      <a href="#" style="display: flex; align-items: center; gap: 10px; color: #fff; text-decoration: none;">
+        <img src="logo.webp" alt="Salisco" style="width: 40px; height: 40px; object-fit: contain; display: block;">
+        <span style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 20px; letter-spacing: 0.08em;">SALISCO</span>
+      </a>
+      <div style="display: flex; gap: 28px; font-size: 14px; color: #b8c4dc;">
+        <a href="#owners" style="color: inherit;">Vehicle Owners</a>
+        <a href="#centers" style="color: inherit;">Service Centers</a>
+        <a href="#parts" style="color: inherit;">Spare Parts</a>
+        <a href="#fleets" style="color: inherit;">Fleets</a>
+        <a href="#business" style="color: inherit;">Business</a>
+        <a href="#about" style="color: inherit;">About</a>
+      </div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 12px;">
+      <button style="background: transparent; color: #e8ecf3; border: 1px solid rgba(255,255,255,0.15); padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 500; cursor: pointer; font-family: inherit;">Sign In</button>
+      <button style="background: #ff7a29; color: #05080f; border: none; padding: 9px 18px; border-radius: 8px; font-size: 13px; font-weight: 600; cursor: pointer; font-family: inherit; box-shadow: 0 4px 16px rgba(255, 122, 41, 0.35);">Get Started</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section style="position: relative; padding: 100px 40px 120px; overflow: hidden;">
+    <!-- background grid -->
+    <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(74, 127, 214, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(74, 127, 214, 0.06) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse at center, #000 30%, transparent 75%);"></div>
+    <!-- glow -->
+    <div style="position: absolute; top: -100px; left: 50%; transform: translateX(-50%); width: 800px; height: 800px; background: radial-gradient(circle, rgba(74, 127, 214, 0.25) 0%, rgba(30, 63, 160, 0.1) 40%, transparent 70%); filter: blur(20px); pointer-events: none;"></div>
+    <div style="position: absolute; bottom: 0; right: 10%; width: 400px; height: 400px; background: radial-gradient(circle, rgba(255, 122, 41, 0.15) 0%, transparent 70%); filter: blur(30px); pointer-events: none;"></div>
+
+    <div style="position: relative; max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 60px; align-items: center;">
+      <div>
+        <div style="display: inline-flex; align-items: center; gap: 8px; background: rgba(74, 127, 214, 0.1); border: 1px solid rgba(74, 127, 214, 0.25); border-radius: 100px; padding: 6px 14px; font-size: 12px; color: #8ba8dc; margin-bottom: 24px; font-family: 'JetBrains Mono', monospace;">
+          <span style="width: 6px; height: 6px; background: #4a7fd6; border-radius: 50%;"></span>
+          THE AUTOMOTIVE WORLD, ALL IN ONE PLATFORM
+        </div>
+        <h1 style="font-family: 'Sora', sans-serif; font-size: clamp(40px, 5.5vw, 72px); line-height: 1.02; font-weight: 700; letter-spacing: -0.03em; margin: 0 0 24px; color: #fff; text-wrap: balance;">
+          Everything your vehicle and business need—<span style="background: linear-gradient(135deg, #ff7a29 0%, #ffb37a 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;">in one platform</span>
+        </h1>
+        <p style="font-size: 18px; line-height: 1.6; color: #b8c4dc; max-width: 560px; margin: 0 0 36px;">
+          SALISCO connects vehicle owners with service centers, spare-parts suppliers, insurance providers, and fleet operators through one unified digital experience. Book, purchase, track, and manage every step with greater confidence and clarity.
+        </p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 32px;">
+          <button style="background: #ff7a29; color: #05080f; border: none; padding: 14px 24px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; box-shadow: 0 8px 24px rgba(255, 122, 41, 0.35); display: inline-flex; align-items: center; gap: 8px;">
+            Get Started
+            <span style="font-size: 18px;">→</span>
+          </button>
+          <button style="background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 14px 24px; border-radius: 10px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: inherit;">
+            Explore Business Solutions
+          </button>
+          <button style="background: transparent; color: #b8c4dc; border: 1px solid rgba(255,255,255,0.1); padding: 14px 24px; border-radius: 10px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: inherit;">
+            Download the App
+          </button>
+        </div>
+        <div style="display: flex; align-items: center; gap: 24px; font-size: 13px; color: #8ba0c0; font-family: 'JetBrains Mono', monospace;">
+          <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 4px; height: 4px; background: #4a7fd6; border-radius: 50%;"></span>Faster service</div>
+          <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 4px; height: 4px; background: #4a7fd6; border-radius: 50%;"></span>Clearer choices</div>
+          <div style="display: flex; align-items: center; gap: 8px;"><span style="width: 4px; height: 4px; background: #4a7fd6; border-radius: 50%;"></span>Better decisions</div>
+        </div>
+      </div>
+
+      <!-- Hero visual: floating dashboard mock -->
+      <div style="position: relative; height: 520px;">
+        <!-- Big S mark -->
+        <div style="position: absolute; top: 20px; right: 20px; width: 320px; height: 320px; background: conic-gradient(from 45deg, #1e3fa0, #4a7fd6, #c0c8d6, #4a7fd6, #1e3fa0); border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%; opacity: 0.15; filter: blur(8px); animation: floatS 8s ease-in-out infinite;"></div>
+
+        <!-- Card 1: booking -->
+        <div style="position: absolute; top: 0; left: 0; width: 320px; background: linear-gradient(180deg, rgba(15, 25, 50, 0.9) 0%, rgba(10, 18, 40, 0.9) 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; backdrop-filter: blur(20px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); animation: slideUp 0.8s ease-out;">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px;">
+            <div style="font-size: 11px; color: #8ba0c0; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.05em;">BOOKING #A-2841</div>
+            <div style="background: rgba(74, 220, 130, 0.15); color: #6adc8e; font-size: 11px; padding: 3px 8px; border-radius: 100px; font-weight: 500;">In Progress</div>
+          </div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 4px;">Full-service maintenance</div>
+          <div style="font-size: 13px; color: #8ba0c0; margin-bottom: 16px;">Toyota Camry · 2022 · 42,180 km</div>
+          <div style="display: flex; gap: 4px; margin-bottom: 8px;">
+            <div style="flex: 1; height: 6px; background: #4a7fd6; border-radius: 3px;"></div>
+            <div style="flex: 1; height: 6px; background: #4a7fd6; border-radius: 3px;"></div>
+            <div style="flex: 1; height: 6px; background: #4a7fd6; border-radius: 3px;"></div>
+            <div style="flex: 1; height: 6px; background: rgba(74, 127, 214, 0.3); border-radius: 3px;"></div>
+            <div style="flex: 1; height: 6px; background: rgba(74, 127, 214, 0.15); border-radius: 3px;"></div>
+          </div>
+          <div style="display: flex; justify-content: space-between; font-size: 12px; color: #8ba0c0;">
+            <span>Step 3 of 5</span>
+            <span style="color: #4a7fd6;">Est. cost: SAR 640</span>
+          </div>
+        </div>
+
+        <!-- Card 2: fleet -->
+        <div style="position: absolute; top: 200px; right: 0; width: 300px; background: linear-gradient(180deg, rgba(15, 25, 50, 0.9) 0%, rgba(10, 18, 40, 0.9) 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 20px; backdrop-filter: blur(20px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); animation: slideUp 0.8s 0.2s ease-out backwards;">
+          <div style="font-size: 11px; color: #8ba0c0; font-family: 'JetBrains Mono', monospace; margin-bottom: 12px; letter-spacing: 0.05em;">FLEET OVERVIEW · TODAY</div>
+          <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 16px;">
+            <div><div style="font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 700; color: #fff;">128</div><div style="font-size: 11px; color: #8ba0c0;">Active vehicles</div></div>
+            <div><div style="font-family: 'Sora', sans-serif; font-size: 28px; font-weight: 700; color: #ff7a29;">7</div><div style="font-size: 11px; color: #8ba0c0;">In maintenance</div></div>
+          </div>
+          <div style="height: 44px; display: flex; align-items: flex-end; gap: 3px;">
+            <div style="flex:1; height: 40%; background: #4a7fd6; border-radius: 2px;"></div>
+            <div style="flex:1; height: 60%; background: #4a7fd6; border-radius: 2px;"></div>
+            <div style="flex:1; height: 30%; background: #4a7fd6; border-radius: 2px;"></div>
+            <div style="flex:1; height: 80%; background: #4a7fd6; border-radius: 2px;"></div>
+            <div style="flex:1; height: 55%; background: #4a7fd6; border-radius: 2px;"></div>
+            <div style="flex:1; height: 90%; background: #ff7a29; border-radius: 2px;"></div>
+            <div style="flex:1; height: 70%; background: #4a7fd6; border-radius: 2px;"></div>
+            <div style="flex:1; height: 45%; background: #4a7fd6; border-radius: 2px;"></div>
+            <div style="flex:1; height: 65%; background: #4a7fd6; border-radius: 2px;"></div>
+            <div style="flex:1; height: 50%; background: #4a7fd6; border-radius: 2px;"></div>
+            <div style="flex:1; height: 75%; background: #4a7fd6; border-radius: 2px;"></div>
+            <div style="flex:1; height: 40%; background: #4a7fd6; border-radius: 2px;"></div>
+          </div>
+        </div>
+
+        <!-- Card 3: part -->
+        <div style="position: absolute; bottom: 0; left: 40px; width: 280px; background: linear-gradient(180deg, rgba(15, 25, 50, 0.9) 0%, rgba(10, 18, 40, 0.9) 100%); border: 1px solid rgba(255,255,255,0.08); border-radius: 16px; padding: 16px; backdrop-filter: blur(20px); box-shadow: 0 24px 60px rgba(0,0,0,0.5); animation: slideUp 0.8s 0.4s ease-out backwards;">
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <div style="width: 52px; height: 52px; background: linear-gradient(135deg, #1a2a4a, #2a3a5a); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 22px;">⚙︎</div>
+            <div style="flex: 1; min-width: 0;">
+              <div style="font-size: 13px; color: #fff; font-weight: 600; margin-bottom: 2px;">Brake Pad Set — Front</div>
+              <div style="font-size: 11px; color: #8ba0c0; font-family: 'JetBrains Mono', monospace;">SKU · BP-04-F218</div>
+            </div>
+            <div style="text-align: right;">
+              <div style="font-family: 'Sora', sans-serif; font-size: 14px; font-weight: 600; color: #fff;">SAR 245</div>
+              <div style="font-size: 10px; color: #6adc8e;">In stock</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- VALUE PROPS -->
+  <section style="padding: 100px 40px; background: linear-gradient(180deg, #05080f 0%, #070c18 100%); border-top: 1px solid rgba(255,255,255,0.04);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="max-width: 720px; margin-bottom: 64px;">
+        <div style="font-size: 12px; color: #ff7a29; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.15em; margin-bottom: 12px;">— WHY SALISCO</div>
+        <h2 style="font-family: 'Sora', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 20px; color: #fff; line-height: 1.05;">Automotive services, made simpler</h2>
+        <p style="font-size: 17px; line-height: 1.6; color: #b8c4dc; margin: 0;">Instead of dealing with disconnected providers and systems, SALISCO gives you one place to manage your vehicle needs or business operations—with current information, continuous updates, and an experience designed for the Saudi market.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px;">
+        <div style="background: linear-gradient(180deg, rgba(15, 25, 50, 0.6) 0%, rgba(10, 18, 40, 0.3) 100%); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px; position: relative; overflow: hidden;">
+          <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #1e3fa0, #4a7fd6); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 20px;">◈</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 8px;">Everything in one place</div>
+          <div style="font-size: 14px; line-height: 1.55; color: #a3b3cc;">Book maintenance, request spare parts, track vehicles, and access supporting services from one account.</div>
+        </div>
+        <div style="background: linear-gradient(180deg, rgba(15, 25, 50, 0.6) 0%, rgba(10, 18, 40, 0.3) 100%); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px;">
+          <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #1e3fa0, #4a7fd6); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 20px;">✓</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 8px;">Clarity and trust</div>
+          <div style="font-size: 14px; line-height: 1.55; color: #a3b3cc;">Review available service details, pricing, and status before making a decision.</div>
+        </div>
+        <div style="background: linear-gradient(180deg, rgba(15, 25, 50, 0.6) 0%, rgba(10, 18, 40, 0.3) 100%); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px;">
+          <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #ff7a29, #ffa060); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 20px;">⚡</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 8px;">A faster digital experience</div>
+          <div style="font-size: 14px; line-height: 1.55; color: #a3b3cc;">Complete tasks online and reduce unnecessary calls, paperwork, and manual follow-ups.</div>
+        </div>
+        <div style="background: linear-gradient(180deg, rgba(15, 25, 50, 0.6) 0%, rgba(10, 18, 40, 0.3) 100%); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; padding: 28px;">
+          <div style="width: 44px; height: 44px; background: linear-gradient(135deg, #1e3fa0, #4a7fd6); border-radius: 10px; display: flex; align-items: center; justify-content: center; margin-bottom: 20px; font-size: 20px;">◉</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 8px;">Individuals & businesses</div>
+          <div style="font-size: 14px; line-height: 1.55; color: #a3b3cc;">A flexible experience for vehicle owners, workshops, parts suppliers, and fleet managers.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS -->
+  <section id="solutions" style="padding: 100px 40px; background: #05080f;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="text-align: center; max-width: 780px; margin: 0 auto 64px;">
+        <div style="font-size: 12px; color: #ff7a29; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.15em; margin-bottom: 12px;">— SOLUTIONS</div>
+        <h2 style="font-family: 'Sora', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; margin: 0; color: #fff; line-height: 1.05; text-wrap: balance;">Specialized solutions for every part of the automotive ecosystem</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+        <!-- Owners -->
+        <a id="owners" href="#" style="text-decoration: none; color: inherit; display: block;">
+          <div style="background: linear-gradient(160deg, rgba(30, 63, 160, 0.15) 0%, rgba(15, 25, 50, 0.6) 60%); border: 1px solid rgba(74, 127, 214, 0.2); border-radius: 20px; padding: 32px; height: 100%; display: flex; flex-direction: column; min-height: 320px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+              <div style="font-size: 11px; color: #8ba0c0; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">01 · OWNERS</div>
+              <div style="width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ff7a29;">→</div>
+            </div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 12px;">For Vehicle Owners</div>
+            <div style="font-size: 14px; line-height: 1.6; color: #a3b3cc; flex: 1;">Create a digital vehicle profile, book services, follow maintenance progress, request parts, and keep service records and invoices organized.</div>
+            <div style="margin-top: 24px; color: #ff7a29; font-size: 13px; font-weight: 600;">Explore Owner Services →</div>
+          </div>
+        </a>
+
+        <!-- Service Centers -->
+        <a id="centers" href="#" style="text-decoration: none; color: inherit; display: block;">
+          <div style="background: linear-gradient(160deg, rgba(30, 63, 160, 0.15) 0%, rgba(15, 25, 50, 0.6) 60%); border: 1px solid rgba(74, 127, 214, 0.2); border-radius: 20px; padding: 32px; height: 100%; display: flex; flex-direction: column; min-height: 320px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+              <div style="font-size: 11px; color: #8ba0c0; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">02 · WORKSHOPS</div>
+              <div style="width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ff7a29;">→</div>
+            </div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 12px;">Service Centers & Workshops</div>
+            <div style="font-size: 14px; line-height: 1.6; color: #a3b3cc; flex: 1;">Manage appointments, work orders, technicians, inventory, customers, and invoices from one operational dashboard.</div>
+            <div style="margin-top: 24px; color: #ff7a29; font-size: 13px; font-weight: 600;">Grow Your Service Center →</div>
+          </div>
+        </a>
+
+        <!-- Parts -->
+        <a id="parts" href="#" style="text-decoration: none; color: inherit; display: block;">
+          <div style="background: linear-gradient(160deg, rgba(255, 122, 41, 0.12) 0%, rgba(15, 25, 50, 0.6) 60%); border: 1px solid rgba(255, 122, 41, 0.25); border-radius: 20px; padding: 32px; height: 100%; display: flex; flex-direction: column; min-height: 320px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+              <div style="font-size: 11px; color: #ffb37a; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">03 · SPARE PARTS</div>
+              <div style="width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ff7a29;">→</div>
+            </div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 12px;">Spare-Parts Stores & Suppliers</div>
+            <div style="font-size: 14px; line-height: 1.6; color: #a3b3cc; flex: 1;">Manage products, orders, inventory, pricing, and customers while gaining access to new sales opportunities.</div>
+            <div style="margin-top: 24px; color: #ff7a29; font-size: 13px; font-weight: 600;">Start Selling →</div>
+          </div>
+        </a>
+
+        <!-- Fleets -->
+        <a id="fleets" href="#" style="text-decoration: none; color: inherit; display: block;">
+          <div style="background: linear-gradient(160deg, rgba(30, 63, 160, 0.15) 0%, rgba(15, 25, 50, 0.6) 60%); border: 1px solid rgba(74, 127, 214, 0.2); border-radius: 20px; padding: 32px; height: 100%; display: flex; flex-direction: column; min-height: 320px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+              <div style="font-size: 11px; color: #8ba0c0; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">04 · FLEETS</div>
+              <div style="width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ff7a29;">→</div>
+            </div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 12px;">Fleet Operators</div>
+            <div style="font-size: 14px; line-height: 1.6; color: #a3b3cc; flex: 1;">Monitor vehicles, maintenance, costs, and renewals with operational insights that help reduce downtime and unnecessary spending.</div>
+            <div style="margin-top: 24px; color: #ff7a29; font-size: 13px; font-weight: 600;">Explore Fleet Management →</div>
+          </div>
+        </a>
+
+        <!-- Insurance -->
+        <a href="#" style="text-decoration: none; color: inherit; display: block;">
+          <div style="background: linear-gradient(160deg, rgba(30, 63, 160, 0.15) 0%, rgba(15, 25, 50, 0.6) 60%); border: 1px solid rgba(74, 127, 214, 0.2); border-radius: 20px; padding: 32px; height: 100%; display: flex; flex-direction: column; min-height: 320px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+              <div style="font-size: 11px; color: #8ba0c0; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">05 · INSURANCE</div>
+              <div style="width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ff7a29;">→</div>
+            </div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 12px;">Insurance & Supporting Services</div>
+            <div style="font-size: 14px; line-height: 1.6; color: #a3b3cc; flex: 1;">Use digital channels to connect with customers and service providers and accelerate requests and follow-up.</div>
+            <div style="margin-top: 24px; color: #ff7a29; font-size: 13px; font-weight: 600;">Become a Partner →</div>
+          </div>
+        </a>
+
+        <!-- Business -->
+        <a id="business" href="#" style="text-decoration: none; color: inherit; display: block;">
+          <div style="background: linear-gradient(160deg, rgba(192, 200, 214, 0.08) 0%, rgba(15, 25, 50, 0.6) 60%); border: 1px solid rgba(192, 200, 214, 0.2); border-radius: 20px; padding: 32px; height: 100%; display: flex; flex-direction: column; min-height: 320px;">
+            <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 24px;">
+              <div style="font-size: 11px; color: #c0c8d6; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.1em;">06 · ENTERPRISE</div>
+              <div style="width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.15); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #ff7a29;">→</div>
+            </div>
+            <div style="font-family: 'Sora', sans-serif; font-size: 22px; font-weight: 600; color: #fff; margin-bottom: 12px;">Business Solutions</div>
+            <div style="font-size: 14px; line-height: 1.6; color: #a3b3cc; flex: 1;">One system for customers, sales, inventory, invoices, and reports—without the complexity of traditional enterprise systems.</div>
+            <div style="margin-top: 24px; color: #ff7a29; font-size: 13px; font-weight: 600;">Talk to Solutions Team →</div>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW IT WORKS -->
+  <section style="padding: 100px 40px; background: linear-gradient(180deg, #05080f 0%, #0a1226 100%); position: relative; overflow: hidden;">
+    <div style="position: absolute; top: 50%; left: -200px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(74, 127, 214, 0.15), transparent 70%); filter: blur(40px);"></div>
+    <div style="max-width: 1200px; margin: 0 auto; position: relative;">
+      <div style="max-width: 640px; margin-bottom: 64px;">
+        <div style="font-size: 12px; color: #ff7a29; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.15em; margin-bottom: 12px;">— HOW IT WORKS</div>
+        <h2 style="font-family: 'Sora', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; margin: 0; color: #fff; line-height: 1.05;">Five steps from account to invoice</h2>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 4px; border: 1px solid rgba(255,255,255,0.06); border-radius: 20px; overflow: hidden; background: rgba(255,255,255,0.03);">
+        <div style="padding: 32px; background: rgba(5, 8, 15, 0.6);">
+          <div style="font-family: 'Sora', sans-serif; font-size: 44px; font-weight: 800; background: linear-gradient(180deg, #4a7fd6, #1e3fa0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; line-height: 1;">01</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px;">Create your account</div>
+          <div style="font-size: 13px; line-height: 1.55; color: #a3b3cc;">Select your account type and enter your essential information.</div>
+        </div>
+        <div style="padding: 32px; background: rgba(5, 8, 15, 0.6);">
+          <div style="font-family: 'Sora', sans-serif; font-size: 44px; font-weight: 800; background: linear-gradient(180deg, #4a7fd6, #1e3fa0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; line-height: 1;">02</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px;">Add vehicle or business</div>
+          <div style="font-size: 13px; line-height: 1.55; color: #a3b3cc;">Register vehicles, branches, services, or company details.</div>
+        </div>
+        <div style="padding: 32px; background: rgba(5, 8, 15, 0.6);">
+          <div style="font-family: 'Sora', sans-serif; font-size: 44px; font-weight: 800; background: linear-gradient(180deg, #4a7fd6, #1e3fa0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; line-height: 1;">03</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px;">Choose a service</div>
+          <div style="font-size: 13px; line-height: 1.55; color: #a3b3cc;">Review suitable options and submit a request or book an appointment.</div>
+        </div>
+        <div style="padding: 32px; background: rgba(5, 8, 15, 0.6);">
+          <div style="font-family: 'Sora', sans-serif; font-size: 44px; font-weight: 800; background: linear-gradient(180deg, #4a7fd6, #1e3fa0); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; line-height: 1;">04</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px;">Track every step</div>
+          <div style="font-size: 13px; line-height: 1.55; color: #a3b3cc;">Receive updates and monitor status, approvals, and expected costs.</div>
+        </div>
+        <div style="padding: 32px; background: rgba(5, 8, 15, 0.6);">
+          <div style="font-family: 'Sora', sans-serif; font-size: 44px; font-weight: 800; background: linear-gradient(180deg, #ff7a29, #cc5a10); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 12px; line-height: 1;">05</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 16px; font-weight: 600; color: #fff; margin-bottom: 8px;">Keep your records</div>
+          <div style="font-size: 13px; line-height: 1.55; color: #a3b3cc;">Access services, invoices, documents, and reports whenever needed.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY SALISCO -->
+  <section id="about" style="padding: 100px 40px; background: #05080f;">
+    <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1.2fr; gap: 80px; align-items: start;">
+      <div style="position: sticky; top: 100px;">
+        <div style="font-size: 12px; color: #ff7a29; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.15em; margin-bottom: 12px;">— WHY SALISCO</div>
+        <h2 style="font-family: 'Sora', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 24px; color: #fff; line-height: 1.05;">Built for the Saudi automotive market</h2>
+        <p style="font-size: 16px; line-height: 1.6; color: #b8c4dc; margin: 0 0 32px;">Arabic-first, right-to-left, with the roles, permissions, and integrations that actual operations need.</p>
+        <button style="background: #ff7a29; color: #05080f; border: none; padding: 14px 24px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit;">Request a Demo →</button>
+      </div>
+      <div style="display: flex; flex-direction: column; gap: 2px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); border-radius: 16px; overflow: hidden;">
+        <div style="padding: 24px 28px; background: #05080f; display: flex; gap: 20px; align-items: flex-start;"><span style="color: #4a7fd6; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-top: 2px;">01</span><span style="font-size: 15px; color: #e8ecf3;">An Arabic-first platform designed for the Saudi market.</span></div>
+        <div style="padding: 24px 28px; background: #05080f; display: flex; gap: 20px; align-items: flex-start;"><span style="color: #4a7fd6; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-top: 2px;">02</span><span style="font-size: 15px; color: #e8ecf3;">Full Arabic and right-to-left interface support.</span></div>
+        <div style="padding: 24px 28px; background: #05080f; display: flex; gap: 20px; align-items: flex-start;"><span style="color: #4a7fd6; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-top: 2px;">03</span><span style="font-size: 15px; color: #e8ecf3;">Access through web and supported mobile devices.</span></div>
+        <div style="padding: 24px 28px; background: #05080f; display: flex; gap: 20px; align-items: flex-start;"><span style="color: #4a7fd6; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-top: 2px;">04</span><span style="font-size: 15px; color: #e8ecf3;">Multiple users, roles, and permissions for business teams.</span></div>
+        <div style="padding: 24px 28px; background: #05080f; display: flex; gap: 20px; align-items: flex-start;"><span style="color: #4a7fd6; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-top: 2px;">05</span><span style="font-size: 15px; color: #e8ecf3;">Clear dashboards and operational reports.</span></div>
+        <div style="padding: 24px 28px; background: #05080f; display: flex; gap: 20px; align-items: flex-start;"><span style="color: #4a7fd6; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-top: 2px;">06</span><span style="font-size: 15px; color: #e8ecf3;">Scalable architecture and service-provider integrations.</span></div>
+        <div style="padding: 24px 28px; background: #05080f; display: flex; gap: 20px; align-items: flex-start;"><span style="color: #ff7a29; font-family: 'JetBrains Mono', monospace; font-size: 13px; margin-top: 2px;">07</span><span style="font-size: 15px; color: #e8ecf3;">Strong focus on privacy and information protection.</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRICING -->
+  <section style="padding: 100px 40px; background: linear-gradient(180deg, #05080f 0%, #070c18 100%);">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="text-align: center; margin-bottom: 64px;">
+        <div style="font-size: 12px; color: #ff7a29; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.15em; margin-bottom: 12px;">— PLANS</div>
+        <h2 style="font-family: 'Sora', sans-serif; font-size: clamp(32px, 4vw, 52px); font-weight: 700; letter-spacing: -0.02em; margin: 0 0 16px; color: #fff; line-height: 1.05;">Flexible plans for every stage of growth</h2>
+        <p style="font-size: 16px; color: #b8c4dc; margin: 0 auto; max-width: 620px;">Choose the plan that matches your organization's size and operating needs. Modules, branches, and advanced services may be added based on the final agreement.</p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+        <div style="background: linear-gradient(180deg, rgba(15, 25, 50, 0.5), rgba(10, 18, 40, 0.3)); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8ba0c0; letter-spacing: 0.1em; margin-bottom: 8px;">TIER 01</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 12px;">Essential</div>
+          <div style="font-size: 14px; color: #a3b3cc; line-height: 1.55; margin-bottom: 24px; min-height: 44px;">For small businesses beginning their digital transformation.</div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-bottom: 28px; font-size: 14px; color: #b8c4dc; line-height: 1.7;">
+            <div>• Customer management</div>
+            <div>• Vehicles & bookings</div>
+            <div>• Work orders</div>
+            <div>• Basic invoices</div>
+          </div>
+          <button style="width: 100%; background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit;">Get Started</button>
+        </div>
+
+        <div style="background: linear-gradient(180deg, rgba(30, 63, 160, 0.3), rgba(15, 25, 50, 0.5)); border: 1px solid #4a7fd6; border-radius: 20px; padding: 36px; position: relative; box-shadow: 0 20px 60px rgba(30, 63, 160, 0.25);">
+          <div style="position: absolute; top: -12px; left: 36px; background: #ff7a29; color: #05080f; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 100px; font-family: 'JetBrains Mono', monospace; letter-spacing: 0.08em;">POPULAR</div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8ba8dc; letter-spacing: 0.1em; margin-bottom: 8px;">TIER 02</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 12px;">Professional</div>
+          <div style="font-size: 14px; color: #b8c4dc; line-height: 1.55; margin-bottom: 24px; min-height: 44px;">For growing businesses requiring broader control and visibility.</div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.15); padding-top: 24px; margin-bottom: 28px; font-size: 14px; color: #e8ecf3; line-height: 1.7;">
+            <div>• Everything in Essential</div>
+            <div>• Inventory management</div>
+            <div>• Reports & analytics</div>
+            <div>• Permissions & team management</div>
+          </div>
+          <button style="width: 100%; background: #ff7a29; color: #05080f; border: none; padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 700; cursor: pointer; font-family: inherit;">Request Pricing</button>
+        </div>
+
+        <div style="background: linear-gradient(180deg, rgba(15, 25, 50, 0.5), rgba(10, 18, 40, 0.3)); border: 1px solid rgba(255,255,255,0.08); border-radius: 20px; padding: 36px;">
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #8ba0c0; letter-spacing: 0.1em; margin-bottom: 8px;">TIER 03</div>
+          <div style="font-family: 'Sora', sans-serif; font-size: 26px; font-weight: 700; color: #fff; margin-bottom: 12px;">Enterprise</div>
+          <div style="font-size: 14px; color: #a3b3cc; line-height: 1.55; margin-bottom: 24px; min-height: 44px;">For networks, fleets, and multi-branch organizations with specialized requirements.</div>
+          <div style="border-top: 1px solid rgba(255,255,255,0.08); padding-top: 24px; margin-bottom: 28px; font-size: 14px; color: #b8c4dc; line-height: 1.7;">
+            <div>• Tailored configuration</div>
+            <div>• Integrations & APIs</div>
+            <div>• Advanced permissions</div>
+            <div>• Agreed support levels</div>
+          </div>
+          <button style="width: 100%; background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 12px; border-radius: 10px; font-size: 14px; font-weight: 600; cursor: pointer; font-family: inherit;">Contact Sales</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MAIN CTA -->
+  <section style="padding: 120px 40px; background: #05080f; position: relative; overflow: hidden;">
+    <div style="position: absolute; inset: 0; background-image: linear-gradient(rgba(74, 127, 214, 0.06) 1px, transparent 1px), linear-gradient(90deg, rgba(74, 127, 214, 0.06) 1px, transparent 1px); background-size: 60px 60px; mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%); -webkit-mask-image: radial-gradient(ellipse at center, #000 20%, transparent 70%);"></div>
+    <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 700px; height: 700px; background: radial-gradient(circle, rgba(255, 122, 41, 0.12), transparent 60%); filter: blur(40px);"></div>
+    <div style="position: relative; max-width: 780px; margin: 0 auto; text-align: center;">
+      <h2 style="font-family: 'Sora', sans-serif; font-size: clamp(36px, 5vw, 64px); font-weight: 700; letter-spacing: -0.03em; margin: 0 0 24px; color: #fff; line-height: 1.05; text-wrap: balance;">Ready for a smarter automotive experience?</h2>
+      <p style="font-size: 18px; line-height: 1.6; color: #b8c4dc; margin: 0 0 40px; text-wrap: pretty;">Whether you own one vehicle or manage hundreds, SALISCO gives you the tools to make faster decisions, improve service quality, and operate more efficiently.</p>
+      <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+        <button style="background: #ff7a29; color: #05080f; border: none; padding: 16px 28px; border-radius: 10px; font-size: 15px; font-weight: 600; cursor: pointer; font-family: inherit; box-shadow: 0 8px 24px rgba(255, 122, 41, 0.35);">Create Your Account</button>
+        <button style="background: rgba(255,255,255,0.06); color: #fff; border: 1px solid rgba(255,255,255,0.15); padding: 16px 28px; border-radius: 10px; font-size: 15px; font-weight: 500; cursor: pointer; font-family: inherit;">Request a Demo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer style="background: #030509; border-top: 1px solid rgba(255,255,255,0.06); padding: 64px 40px 32px;">
+    <div style="max-width: 1200px; margin: 0 auto;">
+      <div style="display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px;">
+        <div>
+          <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
+            <img src="logo.webp" alt="Salisco" style="width: 36px; height: 36px; object-fit: contain; display: block;">
+            <span style="font-family: 'Sora', sans-serif; font-weight: 700; font-size: 18px; letter-spacing: 0.08em; color: #fff;">SALISCO</span>
+          </div>
+          <p style="font-size: 13px; line-height: 1.6; color: #8ba0c0; margin: 0 0 20px; max-width: 300px;">An integrated digital platform created to simplify automotive services and help individuals and businesses manage their needs with greater efficiency and confidence.</p>
+          <div style="display: flex; gap: 8px;">
+            <div style="width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #8ba0c0; font-size: 13px; cursor: pointer;">𝕏</div>
+            <div style="width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #8ba0c0; font-size: 13px; cursor: pointer;">in</div>
+            <div style="width: 32px; height: 32px; border: 1px solid rgba(255,255,255,0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #8ba0c0; font-size: 13px; cursor: pointer;">◉</div>
+          </div>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6a7a96; letter-spacing: 0.1em; margin-bottom: 16px;">SOLUTIONS</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+            <a href="#owners" style="color: #b8c4dc;">Vehicle Owners</a>
+            <a href="#centers" style="color: #b8c4dc;">Service Centers</a>
+            <a href="#parts" style="color: #b8c4dc;">Spare Parts</a>
+            <a href="#fleets" style="color: #b8c4dc;">Fleets</a>
+            <a href="#business" style="color: #b8c4dc;">Business</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6a7a96; letter-spacing: 0.1em; margin-bottom: 16px;">COMPANY</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+            <a href="#about" style="color: #b8c4dc;">About</a>
+            <a href="#" style="color: #b8c4dc;">Partners</a>
+            <a href="#" style="color: #b8c4dc;">Careers</a>
+            <a href="#" style="color: #b8c4dc;">News</a>
+            <a href="#" style="color: #b8c4dc;">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6a7a96; letter-spacing: 0.1em; margin-bottom: 16px;">SUPPORT</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+            <a href="#" style="color: #b8c4dc;">Help Center</a>
+            <a href="#" style="color: #b8c4dc;">FAQs</a>
+            <a href="#" style="color: #b8c4dc;">Service Status</a>
+          </div>
+        </div>
+        <div>
+          <div style="font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #6a7a96; letter-spacing: 0.1em; margin-bottom: 16px;">LEGAL</div>
+          <div style="display: flex; flex-direction: column; gap: 10px; font-size: 13px;">
+            <a href="#" style="color: #b8c4dc;">Terms</a>
+            <a href="#" style="color: #b8c4dc;">Privacy</a>
+            <a href="#" style="color: #b8c4dc;">Cookies</a>
+            <a href="#" style="color: #b8c4dc;">Refunds</a>
+          </div>
+        </div>
+      </div>
+      <div style="border-top: 1px solid rgba(255,255,255,0.06); padding-top: 24px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; font-size: 12px; color: #6a7a96; font-family: 'JetBrains Mono', monospace;">
+        <div>© 2026 SALISCO. All rights reserved.</div>
+        <div>Driving the future of automotive services.</div>
+      </div>
+    </div>
+  </footer>
+
+</div>
+</x-dc>
+</body>
+</html>

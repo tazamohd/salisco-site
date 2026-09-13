@@ -1,77 +1,54 @@
-# Salisco — Corporate Site
+# Salisco
 
-The marketing site for **Salisco LTD**, a Riyadh-based company operating across three
-divisions for the Saudi market:
+The published site is the **SALISCO platform site** in [`site/`](./site) — a Next.js app
+covering the automotive platform for vehicle owners, service centres, spare-parts
+suppliers, fleet operators, insurers and businesses, in English and Arabic.
 
-- **Technology** — product engineering, platforms and data.
-- **Manpower** — skilled talent and workforce solutions.
-- **Automotive** — fleet & garage technology, live today as **SalisAuto**.
+| Path | What it is |
+| --- | --- |
+| [`site/`](./site) | **The site.** Next.js App Router app, static-exported to GitHub Pages. See [`site/README.md`](./site/README.md). |
+| [`design/`](./design) | The Claude Design handoff it was built from: the prototype, the content deck and the chat transcript. |
+| `site/public/legacy/` | The previous corporate page, archived and still served (see below). |
 
-**SalisAuto** is Salisco's first shipping product: a fleet & garage management platform.
-Two further automotive products are in development — **FleetCo** (fleet leasing & financing)
-and **Salis SP** (spare parts marketplace & supply).
+## Deployment
 
-> Headquarters: Riyadh, Kingdom of Saudi Arabia · © 2026 Salisco LTD
+Pushing to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
+which builds `site/` and publishes it to GitHub Pages.
 
-## Highlights
+> **One-time setup:** in **Settings → Pages → Build and deployment**, set
+> **Source** to **GitHub Actions**. Until that is changed, Pages keeps serving from the
+> branch and the workflow's output is built but never published.
 
-A high-motion, dependency-free single page:
+The build assumes a project Pages site at `https://<owner>.github.io/<repo>/`, so it
+sets `NEXT_PUBLIC_BASE_PATH` to `/<repo>`. When a custom domain is attached, change
+`NEXT_PUBLIC_BASE_PATH` to `""` and `NEXT_PUBLIC_SITE_URL` to the domain in the
+workflow.
 
-- **Animated aurora background** — drifting gradient blobs (cyan / amber / violet), grid, floating shapes, film grain.
-- **Kinetic gradient headline** with an animated sheen.
-- **Orbiting brand mark** with glowing rings + mouse parallax.
-- **Scroll-reveal** (blur-slide) on every section, **scroll-progress bar**, blur-on-scroll nav.
-- **Cursor-spotlight** division cards, **magnetic** buttons, micro-interactions.
-- **Live telemetry** panel — values tick in real time, sparkline draws on reveal.
-- Capability **marquee**, shimmering "coming soon" tiles.
-- Full **EN/AR + RTL**, and `prefers-reduced-motion` fully respected.
+## The previous corporate site
 
-> Design direction sourced from the *ui-ux-pro-max* skill (Aurora / Kinetic Typography /
-> Micro-interactions) and *Magic (21st.dev)* component inspiration, hand-built in vanilla
-> CSS/JS so it runs on GitHub Pages with no build step.
+The earlier single-page corporate site — Salisco LTD across Technology, Manpower and
+Automotive — has been moved to `site/public/legacy/` rather than deleted. It is still
+published, at `/legacy/`, with its version archive at `/legacy/versions/`. It is plain
+HTML/CSS/JS with no build step; edit the files in place.
 
-## What's in here
+Two carried-over caveats, both present before the move:
 
-A single-page, dependency-free static site:
+- `legacy/index.html` references `assets/ai-face.png`, which has never existed in this
+  repository — that image 404s.
+- The Arabic brand wordmark there (`ساليسكو`) is a transliteration placeholder, set in
+  `legacy/assets/app.js` (`I18N.ar.brand`).
 
-```
-index.html          # markup (semantic, bilingual via data-i18n keys)
-assets/styles.css    # dark automotive-tech theme, RTL-aware, responsive
-assets/app.js        # EN/AR language toggle + telemetry count-up
-assets/logo.png      # official Salisco circuit-board logo (nav)
-assets/favicon.png   # 64×64 favicon derived from the logo
-```
+Its telemetry figures (vehicles online, uptime, jobs, response time) are illustrative
+sample values. Product names are real: **SalisAuto** (live), **FleetCo** and
+**Salis SP** (coming soon).
 
-> The nav uses `assets/logo.png` and the tab icon uses `assets/favicon.png`.
-> If the logo is missing, the nav falls back to a text wordmark automatically —
-> no broken image.
-
-No build step. Fonts load from Google Fonts; everything else is local.
-
-## Run locally
-
-Open `index.html` directly, or serve it:
+## Running locally
 
 ```bash
-python3 -m http.server 8080
-# then visit http://localhost:8080
+cd site
+npm install
+npm run dev      # http://localhost:3000
 ```
 
-## Bilingual (EN / AR + RTL)
-
-The site ships **English-first** with a built-in Arabic toggle. Clicking the language
-button swaps all copy (driven by the `I18N` dictionary in `assets/app.js`) and flips the
-document to `dir="rtl"`. The chosen language is remembered via `localStorage`.
-
-> ⚠️ **Arabic brand wordmark is a placeholder.** The Arabic rendering of "Salisco"
-> (`ساليسكو`) is a transliteration. Replace it with the official Arabic spelling in
-> `assets/app.js` (`I18N.ar.brand`) once confirmed.
-
-## Content notes
-
-Some figures are **illustrative placeholders** pending real data:
-
-- Telemetry numbers (vehicles online, uptime, jobs, response time) are sample values.
-- "Established 2026" and the three-division count reflect current positioning.
-
-Product names are real: **SalisAuto** (live), **FleetCo** and **Salis SP** (coming soon).
+The legacy page is served at `/legacy/` from the same dev server, since it lives in
+`site/public/`.
