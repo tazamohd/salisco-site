@@ -9,6 +9,8 @@ import { isLocale, localeDir, locales, type Locale } from "@/lib/i18n";
 import { AnnouncementBar } from "@/components/site/AnnouncementBar";
 import { Nav } from "@/components/site/Nav";
 import { Footer } from "@/components/site/Footer";
+import { asset } from "@/lib/asset";
+import { siteUrl } from "@/lib/routes";
 
 const sora = Sora({
   subsets: ["latin"],
@@ -52,13 +54,15 @@ export async function generateMetadata({
   const dict = getDictionary(locale);
 
   return {
+    metadataBase: new URL(siteUrl),
     title: { default: dict.home.meta.title, template: "%s" },
     description: dict.home.meta.description,
-    icons: { icon: "/logo.webp" },
+    icons: { icon: asset("/logo.webp") },
     alternates: {
+      // Absolute, so they stay correct under a subpath deployment.
       languages: {
-        en: "/en",
-        ar: "/ar",
+        en: `${siteUrl}/en/`,
+        ar: `${siteUrl}/ar/`,
       },
     },
   };
