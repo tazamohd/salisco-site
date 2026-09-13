@@ -7,7 +7,6 @@ import { useState } from "react";
 import type { Dictionary } from "@/content/types";
 import { localeHref, localeSwitchLabel, otherLocale, type Locale } from "@/lib/i18n";
 import { ButtonLink } from "@/components/ui/Button";
-import { logoSrc } from "@/lib/asset";
 
 export function Nav({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const [open, setOpen] = useState(false);
@@ -32,7 +31,7 @@ export function Nav({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           className="flex shrink-0 items-center gap-2.5 text-white no-underline hover:text-white"
         >
           <Image
-            src={logoSrc}
+            src="/logo.webp"
             alt="SALISCO"
             width={40}
             height={40}

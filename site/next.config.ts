@@ -1,26 +1,34 @@
 import type { NextConfig } from "next";
 
 /**
- * Built as a static export so GitHub Pages can serve it — Pages runs no Node
- * process. Consequences worth knowing before changing anything here:
+ * Deployed to Vercel, which runs Node — so this is a normal Next build, not a
+ * static export. That restores middleware-based locale detection (`proxy.ts`)
+ * and on-demand image optimisation.
  *
- *  - No middleware/proxy. Locale detection happens in `app/(entry)/page.tsx`,
- *    the static page served at `/`.
- *  - No on-demand image optimisation, hence `images.unoptimized`.
- *  - Every route must be statically known (it is — see `generateStaticParams`).
- *
- * NEXT_PUBLIC_BASE_PATH is `/salisco-site` for a project Pages site
- * (tazamohd.github.io/salisco-site). Set it empty once the site moves to a
- * custom domain or a user/org Pages site served at the root.
+ * `trailingSlash` stays on: the archived legacy site under `public/legacy/`
+ * links between its pages relatively (`../`, `v2/`), which only resolves
+ * correctly when directory URLs keep their trailing slash.
  */
-const basePath = process.env.NEXT_PUBLIC_BASE_PATH ?? "";
-
 const nextConfig: NextConfig = {
-  output: "export",
   reactStrictMode: true,
   trailingSlash: true,
-  basePath,
-  images: { unoptimized: true },
+
+  /**
+   * Next serves `public/` by exact file path and does no directory-index
+   * lookup, so `/legacy/` would 404 while `/legacy/index.html` worked. These
+   * map the four archived pages onto their index files. Add a line here if
+   * another legacy page is ever added.
+   */
+  async rewrites() {
+    return [
+      { source: "/legacy", destination: "/legacy/index.html" },
+      { source: "/legacy/versions", destination: "/legacy/versions/index.html" },
+      {
+        source: "/legacy/versions/:version",
+        destination: "/legacy/versions/:version/index.html",
+      },
+    ];
+  },
 };
 
 export default nextConfig;

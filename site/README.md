@@ -3,32 +3,18 @@
 Implementation of the Claude Design handoff in `../design/Salisco.dc.html`, extended
 to the full site described in `../design/uploads/SALISCO_WEBSITE_CONTENT_EN.md`.
 
-Next.js (App Router) + Tailwind CSS v4, built as a **static export** so GitHub Pages
-can serve it. Every page is pre-rendered in both English and Arabic.
+Next.js (App Router) + Tailwind CSS v4, deployed to **Vercel**. Every page is
+pre-rendered in both English and Arabic.
 
 ## Running it
 
 ```bash
 npm install
-npm run dev      # http://localhost:3000
-npm run build    # static export → out/
+npm run dev      # http://localhost:3000 → redirects to /en or /ar
+npm run build    # production build
+npm run start    # serve the production build
 npm run lint     # eslint
 npm run typecheck
-```
-
-`npm run build` writes `out/`. There is no `npm run start` — the export is plain files;
-`npm run preview` serves them.
-
-Two paths are **export-only**, because `next dev` does not serve directory indexes out
-of `public/`: `/` (the language-detecting entry page) and `/legacy/`. In dev, open
-`/en` directly, or `/index.html` and `/legacy/index.html`. Both behave correctly in the
-build — use `npm run preview` to check them.
-
-To preview exactly what Pages will serve, including the subpath:
-
-```bash
-NEXT_PUBLIC_BASE_PATH=/salisco-site npm run build
-# then serve out/ as if it were mounted at /salisco-site/
 ```
 
 ## How it is put together
@@ -40,23 +26,24 @@ components/sections/ page-level blocks (Hero, Solutions, Pricing, CtaBand, …)
 components/site/     chrome (Nav, Footer, AnnouncementBar, forms)
 content/             all copy — en.ts, ar.ts, typed by types.ts
 lib/i18n.ts          locale list, direction, href helper
-lib/asset.ts         basePath-aware public asset URLs
-public/index.html    the page served at `/` — detects language, redirects
+lib/routes.ts        route list + canonical origin for sitemap/robots
+proxy.ts             redirects unprefixed paths to a locale (Next 16's middleware)
 public/legacy/       the previous corporate site, served at /legacy/
 ```
 
-### Static-export constraints
+### Two things that are easy to break
 
-Pages runs no Node process, which rules out a few things you might otherwise reach for:
+- **`trailingSlash: true` is load-bearing.** The archived legacy pages link to each
+  other relatively (`../`, `v2/`), which only resolves correctly when directory URLs
+  keep their trailing slash.
+- **`public/legacy/` needs the rewrites in `next.config.ts`.** Next serves `public/`
+  by exact file path with no directory-index lookup, so `/legacy/` would 404 while
+  `/legacy/index.html` worked. Add a line there if a legacy page is ever added.
 
-- **No middleware.** Locale detection at `/` is done by `public/index.html`, a small
-  script that reads `navigator.languages` and redirects. Its links are relative so it
-  works at a domain root or under a `/salisco-site/` subpath unchanged.
-- **`next/image` is unoptimized**, and in that mode it does *not* prepend `basePath` —
-  neither does `metadata.icons`. Both must go through `lib/asset.ts` or they 404 on a
-  project Pages site. `next/link` does apply `basePath` automatically.
-- **`sitemap.ts` / `robots.ts` need `export const dynamic = "force-static"`** to be
-  emitted as files.
+This was briefly a static export for GitHub Pages. If it ever goes back, note what
+that costs: no middleware (locale detection at `/` needs a static redirect page),
+`next/image` must be `unoptimized` and then ignores `basePath`, and `sitemap.ts` /
+`robots.ts` need `export const dynamic = "force-static"`.
 
 **All copy lives in `content/`.** Components never hard-code strings, so `en.ts` and
 `ar.ts` can be read side by side and either can be edited without touching layout.
@@ -98,9 +85,9 @@ than faked:
 - [ ] **Legal pages** carry the foundational copy from the content deck plus a visible
       draft notice. Section 21 of the deck requires review by a qualified Saudi lawyer
       before publication.
-- [ ] `NEXT_PUBLIC_SITE_URL` and `NEXT_PUBLIC_BASE_PATH` are set by the deploy
-      workflow for a project Pages site. Update both when a custom domain is attached
-      (see `../README.md`).
+- [ ] **`NEXT_PUBLIC_SITE_URL`** must be set in the Vercel project (production) to the
+      canonical origin, or `sitemap.xml`, `robots.txt` and `hreflang` tags will point
+      at the per-deployment URL.
 
 Section 24 of the content deck lists what the business still needs to confirm before
 publishing (legal entity, CR and VAT numbers, address, contact channels, store links,

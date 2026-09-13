@@ -7,7 +7,6 @@ import { Section, SectionHeading, Eyebrow } from "@/components/ui/Section";
 import { FeatureGrid } from "@/components/ui/Card";
 import { Hero } from "@/components/sections/Hero";
 import { CtaBand } from "@/components/sections/CtaBand";
-import { logoSrc } from "@/lib/asset";
 
 type Params = { params: Promise<{ locale: string }> };
 
@@ -58,7 +57,7 @@ export default async function AboutPage({ params }: Params) {
           <div className="flex justify-center">
             <div className="relative flex size-56 items-center justify-center rounded-[32px] border border-white/8 bg-linear-[160deg] from-blue-900/25 to-[rgba(15,25,50,0.5)] md:size-72">
               <Image
-                src={logoSrc}
+                src="/logo.webp"
                 alt="SALISCO"
                 width={160}
                 height={160}
