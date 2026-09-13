@@ -6,23 +6,26 @@ suppliers, fleet operators, insurers and businesses, in English and Arabic.
 
 | Path | What it is |
 | --- | --- |
-| [`site/`](./site) | **The site.** Next.js App Router app, static-exported to GitHub Pages. See [`site/README.md`](./site/README.md). |
+| [`site/`](./site) | **The site.** Next.js App Router app deployed to Vercel. See [`site/README.md`](./site/README.md). |
 | [`design/`](./design) | The Claude Design handoff it was built from: the prototype, the content deck and the chat transcript. |
 | `site/public/legacy/` | The previous corporate page, archived and still served (see below). |
 
 ## Deployment
 
-Pushing to `main` runs [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml),
-which builds `site/` and publishes it to GitHub Pages.
+Deployed to **Vercel**, which builds `site/` on every push to `main` and publishes
+previews for other branches.
 
-> **One-time setup:** in **Settings → Pages → Build and deployment**, set
-> **Source** to **GitHub Actions**. Until that is changed, Pages keeps serving from the
-> branch and the workflow's output is built but never published.
+Project settings that matter:
 
-The build assumes a project Pages site at `https://<owner>.github.io/<repo>/`, so it
-sets `NEXT_PUBLIC_BASE_PATH` to `/<repo>`. When a custom domain is attached, change
-`NEXT_PUBLIC_BASE_PATH` to `""` and `NEXT_PUBLIC_SITE_URL` to the domain in the
-workflow.
+- **Root directory:** `site`
+- **`NEXT_PUBLIC_SITE_URL`** (production): the canonical origin, used for
+  `sitemap.xml`, `robots.txt` and `hreflang` tags. Previews fall back to Vercel's
+  per-deployment URL, so they never advertise production URLs.
+
+Vercel runs Node, so this is a normal Next build — middleware handles locale
+detection at `/`, and images are optimised on demand. Do not reintroduce
+`output: "export"` without also restoring the static fallbacks it requires
+(see [`site/README.md`](./site/README.md)).
 
 ## The previous corporate site
 

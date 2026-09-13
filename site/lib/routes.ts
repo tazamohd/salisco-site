@@ -22,6 +22,14 @@ export const routes = [
   "/legal/refunds",
 ] as const;
 
-/** Set NEXT_PUBLIC_SITE_URL in the deploy environment before launch. */
-export const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL?.replace(/\/$/, "") ?? "https://salisco.example";
+/**
+ * Absolute base for sitemap/robots/hreflang URLs.
+ *
+ * Set NEXT_PUBLIC_SITE_URL in the Vercel project (production: the custom
+ * domain). Falls back to Vercel's per-deployment URL on previews, so preview
+ * builds do not advertise production URLs.
+ */
+export const siteUrl = (
+  process.env.NEXT_PUBLIC_SITE_URL ??
+  (process.env.VERCEL_URL ? `https://${process.env.VERCEL_URL}` : "http://localhost:3000")
+).replace(/\/$/, "");

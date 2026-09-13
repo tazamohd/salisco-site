@@ -2,7 +2,6 @@ import Image from "next/image";
 import Link from "next/link";
 import type { Dictionary } from "@/content/types";
 import { localeHref, type Locale } from "@/lib/i18n";
-import { logoSrc } from "@/lib/asset";
 import { Newsletter } from "./Newsletter";
 
 const socials = [
@@ -23,7 +22,7 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           <div>
             <div className="mb-4 flex items-center gap-2.5">
               <Image
-                src={logoSrc}
+                src="/logo.webp"
                 alt="SALISCO"
                 width={36}
                 height={36}
