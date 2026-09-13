@@ -661,10 +661,6 @@ a.ci-row:hover { transform: translateY(-2px); border-color: rgba(47,128,230,.4);
 .ai-cube--5 { bottom: 9%; left: 14%; width: 14px; height: 14px; animation-delay: -4s; }
 .ai-cube--6 { top: 15%; left: 10%; width: 10px; height: 10px; animation-delay: -2.5s; }
 
-/* Optional real face photo — drops in when assets/ai-face.png exists */
-.ai-photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity .5s var(--ease); }
-.ai-panel.has-photo .ai-photo { opacity: 1; }
-.ai-panel.has-photo .ai-voxel, .ai-panel.has-photo .ai-face { opacity: .22; }
 /* Optional tower facade photo — drops in when assets/tower.jpg exists */
 .facade-photo { position: absolute; inset: -7% -7% auto auto; width: 46%; max-width: 220px; border-radius: 16px; opacity: .16; transform: rotate(4deg); z-index: -1; }
 
